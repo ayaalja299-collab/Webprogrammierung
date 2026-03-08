@@ -1,0 +1,128 @@
+
+/* improt the font from google fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Pacifico&display=swap');
+
+
+.caveat-<uniquifier > {
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+}
+
+
+.caveat-<uniquifier > {
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+}
+
+:root {
+    /* Define color pallet */
+    --white: #fff;
+    --black: #000;
+    --color1: #7abcc4;
+    --color2: #9491bc;
+    --color3: #df678f;
+    --color4: #f3a6ba;
+    --color5: #fec1b6;
+    --color6: #feeddd;
+    /* Define font sizes */
+    --font-size-s: 0.9rem;
+    --font-size-n: 1rem;
+    --font-size-m: 1.12rem;
+    --font-size-l: 1.5rem;
+    --font-size-xl: 2rem;
+    --font-size-xxl: 3rem;
+    /* Font weight 
+    --font-weight-normal: 400;
+    --font-weight-mdeium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    /*Border radius*/
+    --border-radius-s: 8px;
+    --border-radius-m: 30px;
+    --border-radius-circle: 50%;
+    /*site max width*/
+    --site-max-width: 1800px;
+}
+
+/*Styling for whole  site*/
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+img{
+    width: auto;
+}
+
+.section-content{
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Caveat", cursive;
+}
+
+
+/*navbar styling*/
+header {
+    /*justify-content: space-between;
+    align-items: center;
+    font-size: var(--font-size-l);
+    color: #333;*/
+    background-color: var(--color1);
+}
+
+    header .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        /*max-width: var(--site-max-width);
+        margin: 0 auto;
+        */
+    }
+
+.navbar .nav-logo .logo-text {
+    color: var(--white);
+    font-family: "Pacifico", cursive;
+    font-size: var(--font-size-xxl);
+    font-weight: 400;
+}
+
+.navbar .nav-menu {
+    display: flex;
+    gap: 10px;
+}
+
+.navbar .nav-menu .nav-link {
+        padding: 10px 15px;
+        background: var(--color3);
+        border-radius: var(--border-radius-m);
+        color: var(--white);
+        font-size: var(--font-size-l);
+        transition: 0.3s ease;
+}
+
+.navbar .nav-menu .nav-link:hover {
+    background: var(--color4);
+} 
