@@ -170,3 +170,17 @@ header {
         background-size: contain;
         background-repeat: no-repeat;
     }
+
+    .container #slider-img2 {
+        background-image: url("images/apple.png");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .container #slider-img3 {
+        background-image: url("images/rat.png");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
