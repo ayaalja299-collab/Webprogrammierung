@@ -167,4 +167,6 @@ header {
     .container #slider-img1 {
         background-image: url("images/cake.png");
         background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
     }
