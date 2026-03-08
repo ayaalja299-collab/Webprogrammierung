@@ -162,6 +162,7 @@ header {
         grid-template-columns: repeat(2, 100%);
         height: 100%;
         width: 100%;
+        animation: slider 3s ease-in-out infinite alternate;
         
     }
     .container #slider-img1 {
@@ -183,4 +184,49 @@ header {
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
+    }
+
+    .container .button-holder .button {
+        background-color: var(--color3);
+        width: 15px;
+        height: 15px;
+        border-radius: var(--border-radius-circle);
+        display: inline-block;
+        margin: .3rem;
+    }
+
+    .container .button-holder {
+        position: absolute;
+        left: 50%;
+        bottom: 0%;
+    }
+
+    @keyframes sider{
+        0% {
+            transform: translateX(0%);
+        }
+        20% {
+            transform: translateX(0%);
+        }
+        25% {
+            transform: translateX(-100%);
+        }
+        45% {
+            transform: translateX(-100%);
+        }
+        50% {
+            transform: translateX(-200%);
+        }
+        70% {
+            transform: translateX(-200%);
+        }
+        75% {
+            transform: translateX(-100%);
+        }
+        95% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(0%);
+        }
     }
