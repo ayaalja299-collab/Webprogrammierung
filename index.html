@@ -21,36 +21,102 @@
     </header>
     <main>
         <!--<section class=" hero-section">
-        <div class=" section-content">
-            <div class=" hero-details">
-                <h2 class="title">Title</h2>
-                <h3 class="subtitle">Subtitle</h3>
+    <div class=" section-content">
+        <div class=" hero-details">
+            <h2 class="title">Title</h2>
+            <h3 class="subtitle">Subtitle</h3>
 
-                <div class="buttons">
-                    <a href="#" class="buttons recipe">check out the recipe!</a>
-                </div>
-            </div>
-            <div class="hero-image-wrapped">
-                <img src="cake.png" alt="food" class="hero-image" />
+            <div class="buttons">
+                <a href="#" class="buttons recipe">check out the recipe!</a>
             </div>
         </div>
-        </section>*/-->
+        <div class="hero-image-wrapped">
+            <img src="cake.png" alt="food" class="hero-image" />
+        </div>
+    </div>
+    </section>*/-->
+        <div>
+            <div class="title1"><h1>Today's recipies</h1></div>
+        </div>
         <div class="container">
             <div class="wrapper">
+
+                <!-- LEFT ARROW -->
+
+                <button class="arrow arrow-left">&#10094;</button>
+
                 <div class="wrapper-holder">
-                    <div id="slider-img1" class="slide"></div>
-                    <div id="slider-img2" class="slide"></div>
-                    <div id="slider-img3" class="slide"></div>
-                    <!-- add more slides as needed -->
+                    <div id="slider-img1" class="slide">
+                        <div class="slide-content">
+                            <h2>Chocolate Cake</h2>
+                            <p>Soft, rich and perfect for dessert lovers.</p>
+                        </div>
+                    </div>
+
+                    <div id="slider-img2" class="slide">
+                        <div class="slide-content">
+                            <h2>Ratatouille</h2>
+                            <p>A healthy vegetable dish full of flavor.</p>
+                        </div>
+                    </div>
+
+                    <div id="slider-img3" class="slide">
+                        <div class="slide-content">
+                            <h2>Apple Pie</h2>
+                            <p>Classic pie with cinnamon and crispy crust.</p>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- RIGHT ARROW -->
+                <button class="arrow arrow-right">&#10095;</button>
+                <!-- RIGHT ARROW -->
+
+
             </div>
 
             <div class="button-holder">
-                <a href="slider-img1" class="button"></a>
-                <a href="slider-img2" class="button"></a>
-                <a href="slider-img3" class="button"></a>
+                <button class="button" data-index="0"></button>
+                <button class="button" data-index="1"></button>
+                <button class="button" data-index="2"></button>
             </div>
         </div>
+        <!-- Recipe Cards Section -->
+        <section class="recipes-section">
+            <h2 class="section-title">Popular Recipes</h2>
+
+            <div class="recipes-grid">
+
+                <div class="recipe-card">
+                    <img src="images/cake.png" alt="Chocolate Cake">
+                    <h3>Chocolate Cake</h3>
+                    <p>Rich and fluffy chocolate cake perfect for dessert lovers.</p>
+                    <a href="#" class="recipe-btn">View Recipe</a>
+                </div>
+
+                <div class="recipe-card">
+                    <img src="images/rat.png" alt="Ratatouille">
+                    <h3>Ratatouille</h3>
+                    <p>A healthy French vegetable dish full of flavor.</p>
+                    <a href="#" class="recipe-btn">View Recipe</a>
+                </div>
+
+                <div class="recipe-card">
+                    <img src="images/apple.png" alt="Apple Pie">
+                    <h3>Apple Pie</h3>
+                    <p>Classic apple pie with cinnamon and a crispy crust.</p>
+                    <a href="#" class="recipe-btn">View Recipe</a>
+                </div>
+
+                <div class="recipe-card">
+                    <img src="images/cake.png" alt="Pancakes">
+                    <h3>Pancakes</h3>
+                    <p>Soft pancakes perfect for breakfast with syrup.</p>
+                    <a href="#" class="recipe-btn">View Recipe</a>
+                </div>
+
+            </div>
+        </section>
     </main>
 
 

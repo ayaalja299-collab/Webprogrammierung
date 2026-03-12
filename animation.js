@@ -4,7 +4,16 @@ const buttons = Array.from(document.querySelectorAll('.button'));
 const slides = Array.from(document.querySelectorAll('.wrapper-holder .slide'));
 let index = 0;
 const total = slides.length;
+const leftArrow = document.querySelector('.arrow-left');
+const rightArrow = document.querySelector('.arrow-right');
 
+leftArrow.addEventListener('click', () => {
+    showSlide(index - 1);
+});
+
+rightArrow.addEventListener('click', () => {
+    showSlide(index + 1);
+});
 // Guard: nothing to do if slider not present
 if (!holder || total === 0) {
     // Optionally log to console for debugging
