@@ -85,14 +85,10 @@ img{
 
 /*navbar styling*/
 header {
-    /*justify-content: space-between;
-    align-items: center;
-    font-size: var(--font-size-l);
-    color: #333;*/
     background-color: var(--color1);
 }
 
-    header .navbar {
+header .navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -100,7 +96,7 @@ header {
         /*max-width: var(--site-max-width);
         margin: 0 auto;
         */
-    }
+}
 
 .navbar .nav-logo .logo-text {
     color: var(--white);
@@ -145,7 +141,7 @@ header {
     }
 */
 
-.container {
+/*.container {
     position: relative;
 }
 
@@ -205,28 +201,99 @@ header {
         0% {
             transform: translateX(0%);
         }
+        10% {
+            transform: translateX(-100%);
+        }
         20% {
-            transform: translateX(0%);
-        }
-        25% {
             transform: translateX(-100%);
         }
-        45% {
-            transform: translateX(-100%);
+        30% {
+            transform: translateX(-200%);
+        }
+        40% {
+            transform: translateX(-200%);
         }
         50% {
             transform: translateX(-200%);
         }
+        60% {
+            transform: translateX(-300%);
+        }
         70% {
-            transform: translateX(-200%);
+            transform: translateX(-300%);
         }
-        75% {
-            transform: translateX(-100%);
+        80% {
+            transform: translateX(-300%);
         }
-        95% {
-            transform: translateX(-100%);
+        90% {
+            transform: translateX(0%);
         }
         100% {
             transform: translateX(0%);
         }
+    }*/
+
+/* container / slider */
+.container {
+    position: relative;
+}
+
+    .container .wrapper {
+        width: 70vw;
+        height: 70vh;
+        box-shadow: 10px 10px 20px rgba(0,0,0,0.6);
+        margin: 5rem auto;
+        overflow: hidden;
+    }
+
+    .container .wrapper-holder {
+        display: flex;
+        height: 100%;
+        transition: transform 0.5s ease;
+    }
+
+  /* each slide fills the wrapper (100%) so transform -100% moves to next slide */
+        .container .wrapper-holder .slide {
+            min-width: 100%;
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+/* set images (ensure files exist at images/cake.png etc) */
+#slider-img1 {
+    background-image: url("images/cake.png");
+}
+
+#slider-img2 {
+    background-image: url("images/rat.png");
+}
+
+#slider-img3 {
+    background-image: url("images/apple.png");
+}
+
+/* nav buttons */
+.button-holder {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    bottom: 8px;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 2px;
+}
+
+.button {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(189, 189, 189, 0.63);
+    cursor: pointer;
+}
+
+    .button.active {
+        background:var(--color3);
     }
