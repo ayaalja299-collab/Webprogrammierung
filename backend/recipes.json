@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "name": "Chocolate Cake",
+        "ingredients": [
+            "2 cups all-purpose flour",
+            "1 3/4 cups sugar",
+            "3/4 cup unsweetened cocoa powder",
+            "1 1/2 teaspoons baking powder",
+            "1 1/2 teaspoons baking soda",
+            "1 teaspoon salt",
+            "2 large eggs",
+            "1 cup whole milk",
+            "1/2 cup vegetable oil",
+            "2 teaspoons vanilla extract",
+            "1 cup boiling water"
+        ],
+        "instructions": "Preheat oven to 350°F (175°C). Grease and flour two 9-inch round baking pans. In a large bowl, stir together the flour, sugar, cocoa, baking powder, baking soda, and salt. Add the eggs, milk, oil, and vanilla. Beat on medium speed for 2 minutes. Stir in the boiling water (batter will be thin). Pour batter into prepared pans. Bake for 30-35 minutes or until a toothpick inserted into the center comes out clean. Cool for 10 minutes; remove from pans to wire racks. Cool completely."
+    },
+    {
+        "id": 2,
+        "name": "Spaghetti Carbonara",
+        "ingredients": [
+            "200g spaghetti",
+            "100g pancetta",
+            "2 large eggs",
+            "50g grated Parmesan cheese",
+            "2 cloves garlic, minced",
+            "Salt and black pepper to taste",
+            "Fresh parsley for garnish"
+        ],
+        "instructions": "Cook spaghetti according to package instructions until al dente. In a pan, cook pancetta over medium heat until crispy. Add minced garlic and cook for 1 minute. In a bowl, whisk together eggs and grated Parmesan cheese. Drain spaghetti and return to pot. Quickly add the pancetta and garlic mixture, then pour in the egg and cheese mixture. Toss everything together until the eggs are cooked by the residual heat of the pasta. Season with salt and black pepper. Garnish with fresh parsley before serving."
+    },
+    {
+        "id": 3,
+        "name": "Ratatouille",
+        "ingredients": [
+            "1 eggplant, diced",
+            "1 zucchini, diced",
+            "1 bell pepper, diced",
+            "1 onion, diced",
+            "2 cloves garlic, minced",
+            "4 tomatoes, diced",
+            "2 tablespoons olive oil",
+            "Salt and black pepper to taste",
+            "Fresh basil for garnish"
+        ],
+        "instructions": "Preheat oven to 375°F (190°C). In a large skillet, heat olive oil over medium heat. Add diced onion and minced garlic, and sauté until softened. Add diced eggplant, zucchini, and bell pepper. Cook until vegetables are tender. Stir in diced tomatoes and season with salt and black pepper. Transfer the vegetable mixture to a baking dish and bake for 25-30 minutes until the vegetables are fully cooked and the flavors have melded together. Garnish with fresh basil before serving."
+    }
+]
