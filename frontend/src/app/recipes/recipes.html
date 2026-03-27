@@ -1,0 +1,28 @@
+<h1 class="section-title">All Recipes </h1>
+
+<!-- Vergrößerte Toolbar -->
+<div class="recipes-toolbar">
+  <div class="toolbar-inner">
+    <div class="search-group">
+      <input
+        type="search"
+        id="search"
+        placeholder="Search for recipe..."
+        aria-label="Rezepte durchsuchen"
+      />
+    </div>
+    <div class="select-group">
+      <label for="sort" class="sr-only">Sortieren</label>
+      <select id="sort" aria-label="Rezepte sortieren">
+        <option value="name-asc">Name A–Z</option>
+        <option value="name-desc">Name Z–A</option>
+        <option value="id-asc">ID ↑</option>
+        <option value="id-desc">ID ↓</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div id="recipes-grid" class="recipes-grid fade-in-grid">
+  <!-- Karten werden per JS (rezepte.js) eingefügt -->
+</div>

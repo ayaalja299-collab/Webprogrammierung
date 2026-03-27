@@ -25,6 +25,11 @@
                 "input": "public"
               }
             ],
+            "scripts": [
+              "src/scripts/home.js",
+              "src/scripts/recipes.js",
+              "src/scripts/recipe-details.js"
+            ],
             "styles": [
               "src/styles.css"
             ]
