@@ -1,0 +1,53 @@
+<!-- Webprogrammierung frontend/rezept-details.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Recipe Details</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="rezepte.css"/>
+</head>
+<body>
+<header>
+    <nav class="navbar section-content">
+        <a href="index.html" class="nav-logo"><h2 class="logo-text">Title</h2></a>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="rezepte.html" class="nav-link">Recipes</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="section-content">
+    <a href="rezepte.html" class="back-link slide-in-left">←Back to all recipes</a>
+
+    <article id="recipe-detail" class="recipe-detail-card pop-in shimmer">
+        <div class="detail-header">
+            <img id="recipe-image" src="images/cake.png" alt="Rezept Bild"/>
+            <div class="detail-title">
+                <h1 id="recipe-name">Loading...</h1>
+                <p id="recipe-desc">Please wait</p>
+                <div class="chips">
+                    <span class="chip">Recipe</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-content">
+            <section class="ingredients zoom-in">
+                <h2>Ingridients</h2>
+                <ul id="ingredients-list"></ul>
+            </section>
+
+            <section class="instructions fade-in-block">
+                <h2>Preparation</h2>
+                <p id="instructions-text"></p>
+            </section>
+        </div>
+    </article>
+</main>
+
+<script src="rezepte-details.js"></script>
+</body>
+</html>

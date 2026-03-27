@@ -1,26 +1,8 @@
-
-/* improt the font from google fonts*/
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Pacifico&display=swap');
 
-
-.caveat-<uniquifier > {
-    font-family: "Caveat", cursive;
-    font-optical-sizing: auto;
-    font-weight: <weight>;
-    font-style: normal;
-}
-
-
-.caveat-<uniquifier > {
-    font-family: "Caveat", cursive;
-    font-optical-sizing: auto;
-    font-weight: <weight>;
-    font-style: normal;
-}
-
+/* Root-Variablen */
 :root {
-    /* Define color pallet */
     --white: #fff;
     --black: #000;
     --color1: #7abcc4;
@@ -29,52 +11,22 @@
     --color4: #f3a6ba;
     --color5: #fec1b6;
     --color6: #feeddd;
-    /* Define font sizes */
+
     --font-size-s: 0.9rem;
     --font-size-n: 1rem;
     --font-size-m: 1.12rem;
     --font-size-l: 1.5rem;
     --font-size-xl: 2rem;
     --font-size-xxl: 3rem;
-    /* Font weight 
-    --font-weight-normal: 400;
-    --font-weight-mdeium: 500;
-    --font-weight-semibold: 600;
-    --font-weight-bold: 700;
-    /*Border radius*/
+
     --border-radius-s: 8px;
     --border-radius-m: 30px;
     --border-radius-circle: 50%;
-    /*site max width*/
+
     --site-max-width: 1800px;
 }
 
-/*Styling for whole  site*/
-ul {
-    list-style: none;
-}
-
-a {
-    text-decoration: none;
-}
-
-button {
-    cursor: pointer;
-    border: none;
-    background: none;
-}
-
-img{
-    width: auto;
-}
-
-.section-content{
-    max-width: var(--site-max-width);
-    margin: 0 auto;
-    padding: 20px;
-}
-
-
+/* Global Reset & Base */
 * {
     margin: 0;
     padding: 0;
@@ -82,20 +34,31 @@ img{
     font-family: "Caveat", cursive;
 }
 
+ul { list-style: none; }
+a { text-decoration: none; }
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+img { width: auto; }
 
-/*navbar styling*/
+.section-content {
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Navbar */
 header {
     background-color: var(--color1);
 }
 
 header .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-        /*max-width: var(--site-max-width);
-        margin: 0 auto;
-        */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
 }
 
 .navbar .nav-logo .logo-text {
@@ -111,62 +74,55 @@ header .navbar {
 }
 
 .navbar .nav-menu .nav-link {
-        padding: 10px 15px;
-        background: var(--color3);
-        border-radius: var(--border-radius-m);
-        color: var(--white);
-        font-size: var(--font-size-l);
-        transition: 0.3s ease;
+    padding: 10px 15px;
+    background: var(--color3);
+    border-radius: var(--border-radius-m);
+    color: var(--white);
+    font-size: var(--font-size-l);
+    transition: 0.3s ease;
 }
 
 .navbar .nav-menu .nav-link:hover {
     background: var(--color4);
 }
 
-
-/* container / slider */
+/* Slider Container */
 .container {
     position: relative;
 }
 
 .container .wrapper {
-     width: 70vw;
-     height: 70vh;
-     box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-     margin: 5rem auto;
-     overflow: hidden;
-     border-radius: 15px;
+    width: 70vw;
+    height: 70vh;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    margin: 5rem auto;
+    overflow: hidden;
+    border-radius: 15px;
+    position: relative;
 }
 
-    .container .wrapper-holder {
-        display: flex;
-        height: 100%;
-        transition: transform 0.5s ease;
-    }
-
-  /* each slide fills the wrapper (100%) so transform -100% moves to next slide */
-        .container .wrapper-holder .slide {
-            min-width: 100%;
-            height: 100%;
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-
-/* set images (ensure files exist at images/cake.png etc) */
-#slider-img1 {
-    background-image: url("images/cake.png");
+.container .wrapper-holder {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease;
 }
 
-#slider-img2 {
-    background-image: url("images/rat.png");
+/* Jede Slide füllt 100% Breite der Wrapper-Bühne */
+.container .wrapper-holder .slide {
+    min-width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative; /* für Overlay/Text */
 }
 
-#slider-img3 {
-    background-image: url("images/apple.png");
-}
+/* Hintergrundbilder der Slides (passe Pfade bei Bedarf an) */
+#slider-img1 { background-image: url("images/chocolate-cake.jpg"); }
+#slider-img2 { background-image: url("images/Ratatouille.jpg"); }
+#slider-img3 { background-image: url("images/Apple Crumble.jpg"); }
 
-/* nav buttons */
+/* Slider-Navigation Buttons (Dots) */
 .button-holder {
     display: flex;
     position: absolute;
@@ -174,11 +130,7 @@ header .navbar {
     bottom: 8px;
     gap: 8px;
     justify-content: center;
-    margin-top: 2px;
-}
-
-.wrapper{
-        position: relative;
+    transform: translateX(-50%);
 }
 
 .button {
@@ -190,80 +142,9 @@ header .navbar {
     cursor: pointer;
 }
 
-    .button.active {
-        background:var(--color3);
-    }
+.button.active { background: var(--color3); }
 
-/* Recipe Section */
-
-.recipes-section {
-    padding: 60px 20px;
-    background: var(--color6);
-    text-align: center;
-}
-
-.section-title {
-    font-size: var(--font-size-xxl);
-    margin-bottom: 40px;
-}
-
-/* Grid layout */
-
-.recipes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: auto;
-}
-
-/* Recipe Card */
-
-.recipe-card {
-    background: white;
-    border-radius: var(--border-radius-s);
-    padding: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
-}
-
-    .recipe-card:hover {
-        transform: translateY(-5px);
-    }
-
-    .recipe-card img {
-        width: 100%;
-        border-radius: var(--border-radius-s);
-        margin-bottom: 15px;
-    }
-
-    .recipe-card h3 {
-        font-size: var(--font-size-l);
-        margin-bottom: 10px;
-    }
-
-    .recipe-card p {
-        font-size: var(--font-size-m);
-        margin-bottom: 15px;
-    }
-
-/* Button */
-
-.recipe-btn {
-    display: inline-block;
-    padding: 8px 16px;
-    background: var(--color3);
-    color: white;
-    border-radius: var(--border-radius-m);
-    transition: 0.3s;
-}
-
-    .recipe-btn:hover {
-        background: var(--color4);
-    }
-
-/* slider arrows */
-
+/* Slider Pfeile */
 .arrow {
     position: absolute;
     top: 50%;
@@ -282,29 +163,17 @@ header .navbar {
     z-index: 10;
 }
 
-    .arrow:hover {
-        background: rgba(0,0,0,0.7);
-    }
+.arrow:hover { background: rgba(0,0,0,0.7); }
+.arrow-left { left: 20px; z-index: 10; }
+.arrow-right { right: 10px; }
 
-.arrow-left {
-    left: 20px;
-    z-index: 10;
+/* Slide Overlay für bessere Lesbarkeit */
+.slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.1));
 }
-
-.arrow-right {
-    right: 10px;
-}
-
-.slide {
-    position: relative;
-}
-
-    .slide::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient( to top, rgba(0,0,0,0.6), rgba(0,0,0,0.1) );
-    }
 
 .slide-content {
     position: absolute;
@@ -314,11 +183,210 @@ header .navbar {
     z-index: 2;
 }
 
-    .slide-content h2 {
-        font-size: 2.5rem;
-        margin-bottom: 10px;
-    }
+.slide-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+.slide-content p { font-size: 1.2rem; }
 
-    .slide-content p {
-        font-size: 1.2rem;
+/* Optional: komplette Slide klickbar machen */
+.slide .slide-link {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+}
+
+/* Haupttitel */
+.title1 h1 {
+    font-size: var(--font-size-xxl);
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Recipes Section */
+.recipes-section {
+    padding: 60px 20px;
+    background: var(--color6);
+    text-align: center;
+}
+
+.section-title {
+    font-size: var(--font-size-xxl);
+    margin-bottom: 40px;
+}
+
+/* Grid Layout für Karten */
+.recipes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Recipe Card */
+.recipe-card {
+    background: white;
+    border-radius: var(--border-radius-s);
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+    color: inherit;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.25);
+}
+
+.recipe-card img {
+    width: 100%;
+    border-radius: var(--border-radius-s);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.recipe-card h3 {
+    font-size: var(--font-size-l);
+    margin-bottom: 10px;
+}
+
+.recipe-card p {
+    font-size: var(--font-size-m);
+    margin-bottom: 15px;
+}
+
+/* Button */
+.recipe-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--color3);
+    color: white;
+    border-radius: var(--border-radius-m);
+    transition: 0.3s;
+    font-size: var(--font-size-m);
+}
+
+.recipe-btn:hover { background: var(--color4); }
+
+/* Zusätzliche Animationen/Effekte (für Liste/Details wiederverwendbar) */
+.fade-in-grid { animation: fadeIn 500ms ease both; }
+.reveal { opacity: 0; transform: translateY(10px); transition: 400ms ease; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.hover-rise { transition: transform .25s ease, box-shadow .25s ease; }
+.hover-rise:hover { transform: translateY(-6px); box-shadow: 0 10px 22px rgba(0,0,0,.18); }
+
+.pop-in { animation: popIn 400ms ease both; }
+.slide-in-left { animation: slideInLeft 400ms ease both; }
+.zoom-in { animation: zoomIn 400ms ease both; }
+.fade-in-block { animation: fadeInUp 450ms ease both; }
+
+/* Shimmer Loading Effekt (z.B. für Details) */
+.shimmer { position: relative; overflow: hidden; }
+.shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.35) 40%, rgba(255,255,255,0) 80%);
+    animation: shimmer 1.3s infinite;
+}
+
+/* Zutaten-Item Reveal (Detailseite) */
+.ingredient-item { opacity: 0; transform: translateX(-8px); }
+.ingredient-item.reveal-item { animation: itemIn .35s ease forwards; }
+
+/* Detail-Seite Layout (falls du rezept-details.html nutzt) */
+.recipe-detail-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 26px rgba(0,0,0,.12);
+    overflow: hidden;
+}
+
+.detail-header {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 20px;
+    padding: 20px;
+    background: var(--color6);
+    align-items: center;
+}
+
+.detail-header img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.detail-title h1 {
+    font-size: var(--font-size-xxl);
+    margin-bottom: 6px;
+}
+
+.detail-title p {
+    font-size: var(--font-size-m);
+    color: #444;
+}
+
+.chips {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.chip {
+    background: var(--color3);
+    color: #fff;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: var(--font-size-s);
+}
+
+.detail-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 24px;
+    padding: 24px;
+}
+
+.ingredients, .instructions {
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.08);
+}
+
+.ingredients h2, .instructions h2 { margin-bottom: 10px; }
+#ingredients-list { padding-left: 16px; }
+#ingredients-list li { margin: 6px 0; }
+
+/* Keyframes */
+@keyframes fadeIn { from {opacity:0} to {opacity:1} }
+@keyframes popIn { from { opacity:0; transform: scale(.97) } to { opacity:1; transform: scale(1) } }
+@keyframes slideInLeft { from { opacity:0; transform: translateX(-10px)} to {opacity:1; transform: translateX(0)} }
+@keyframes zoomIn { from { opacity:0; transform: scale(.98)} to {opacity:1; transform: scale(1)} }
+@keyframes fadeInUp { from { opacity:0; transform: translateY(6px)} to {opacity:1; transform: translateY(0)} }
+@keyframes shimmer { 0% { transform: translateX(-100%) } 100% { transform: translateX(100%) } }
+@keyframes itemIn { to { opacity:1; transform: translateX(0) } }
+
+/* Responsiv für Slider/Details */
+@media (max-width: 1200px) {
+    .container .wrapper {
+        width: 90vw;
+        height: 60vh;
     }
+}
+
+@media (max-width: 900px) {
+    .container .wrapper {
+        width: 94vw;
+        height: 50vh;
+    }
+    .detail-header { grid-template-columns: 1fr; }
+    .detail-content { grid-template-columns: 1fr; }
+    .slide-content { left: 20px; right: 20px; }
+    .slide-content h2 { font-size: 2rem; }
+    .slide-content p { font-size: 1rem; }
+}
