@@ -16,6 +16,9 @@
       <div class="button-container">
         <button routerLink="/change-profile">Edit your Profile</button>
         <button (click)="logout()">Logout</button>
+        @if ((activeUser$ | async)?.isAdmin) {
+          <button routerLink="/create-recipe">Create new Recipe</button>
+        }
       </div>
     </div>
 

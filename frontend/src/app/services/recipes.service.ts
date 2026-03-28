@@ -35,6 +35,29 @@ export class RecipesService {
     return  this.http.get<Recipe>(url);
   }
 
+  createRecipe(
+    name: string,
+    description: string,
+    ingredients: string[],
+    instructions: string,
+    imagePath?: string
+  ): Observable<void> {
+    const url = this.backendUrl + "/recipes/create";
+
+    return this.authService.activeUser$.pipe(
+      switchMap(user => {
+        if (!user) {
+          return throwError(() => new Error("No user logged in"));
+        }
+        if (!user.isAdmin) {
+          return throwError(() => new Error("User does not have privileges"));
+        }
+
+        return this.http.post<void>(url, {name, description, ingredients, instructions, imagePath});
+      })
+    );
+  }
+
   getFavorites(): Observable<Recipe[]> {
     const favoriteUrl = this.backendUrl + '/favorites';
     const manyRecipesUrl = this.backendUrl + '/many-recipes';

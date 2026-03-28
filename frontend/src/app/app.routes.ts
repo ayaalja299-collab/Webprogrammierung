@@ -7,6 +7,7 @@ import {Profile} from './profile/profile';
 import {Register} from './register/register';
 import {ChangeInfo} from './change-info/change-info';
 import {Favorites} from './favorites/favorites';
+import {CreateRecipe} from './create-recipe/create-recipe';
 
 export const routes: Routes = [
   {
@@ -42,5 +43,9 @@ export const routes: Routes = [
   {
     path: "favorites",
     component: Favorites
+  },
+  {
+    path: "create-recipe",
+    component: CreateRecipe
   }
 ];

@@ -6,27 +6,6 @@ const fs = require("fs");
 app.use(express.json());
 app.use(cors());
 
-/*
-app.get('/users', (req, res) => {
-    res.type('application/json');
-    fs.readFile(__dirname + '/users.json', 'utf8', (err, data) => {
-        res.send(data);
-    });
-});
-
-app.get('/users/:id', (req, res) => {
-    res.type('application/json');
-    fs.readFile(__dirname + '/users.json', 'utf8', (err, data) => {
-        const user = JSON.parse(data).find(item => item.id === +req.params.id);
-        if (user) {
-            res.json(user);
-        } else {
-            res.status(404).end();
-        }
-    });
-});
- */
-
 app.post("/auth/login", (req, res) => {
    res.type("application/json");
    fs.readFile(__dirname + "/users.json", (err, data) => {
@@ -39,7 +18,7 @@ app.post("/auth/login", (req, res) => {
            res.status(401).end();
            return;
        }
-       res.json({ id: user.id, username: user.username, email: user.email });
+       res.json({ id: user.id, username: user.username, email: user.email, isAdmin: user.admin });
    })
 });
 
@@ -47,14 +26,16 @@ app.post("/auth/register", (req, res) => {
     const user = {
         username: req.body.username,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        favorites: [],
+        admin: false
     };
     const filename = __dirname + "/users.json";
 
     res.type("application/json");
     fs.readFile(filename, (err, data) => {
         const users = JSON.parse(data);
-        user.id = users.length;
+        user.id = users.length + 1;
         if (users.find(u => u.username === user.username)) {
             res.status(401).end("Username already exists");
             return;
@@ -151,6 +132,28 @@ app.get('/recipes', (req, res) => {
     res.type('application/json');
     fs.readFile(__dirname + '/recipes.json', 'utf8', (err, data) => {
         res.send(data);
+    });
+});
+
+app.post("/recipes/create", (req, res) => {
+    const recipe = {
+        name: req.body.name,
+        description: req.body.description,
+        ingredients: req.body.ingredients,
+        instructions: req.body.instructions,
+        imagePath: req.body.imagePath
+    };
+    const filename = __dirname + "/recipes.json";
+
+    res.type("application/json");
+    fs.readFile(filename, (err, data) => {
+        const recipes = JSON.parse(data);
+        recipe.id = recipes.length + 1;
+        recipes.push(recipe);
+        fs.writeFile(filename, JSON.stringify(recipes, null, 4), err => {
+            if (err) return res.sendStatus(500);
+            res.status(201).end();
+        });
     });
 });
 

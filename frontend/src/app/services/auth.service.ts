@@ -6,6 +6,7 @@ export interface ActiveUser {
   id: number;
   username: string;
   email: string;
+  isAdmin: boolean;
 }
 
 @Injectable({
