@@ -10,5 +10,6 @@
       <p>{{ (activeUser$ | async)!.email }}</p>
     </div>
   </div>
+  <button routerLink="/change-profile">Edit your Profile</button>
   <button (click)="logout()">Logout</button>
 </div>

@@ -5,6 +5,7 @@ import {RecipeDetails} from './recipe-details/recipe-details'
 import {Login} from './login/login';
 import {Profile} from './profile/profile';
 import {Register} from './register/register';
+import {ChangeInfo} from './change-info/change-info';
 
 export const routes: Routes = [
   {
@@ -32,5 +33,9 @@ export const routes: Routes = [
   {
     path: "profile",
     component: Profile
+  },
+  {
+    path: "change-profile",
+    component: ChangeInfo
   }
 ];

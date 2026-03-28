@@ -64,11 +64,38 @@ app.post("/auth/register", (req, res) => {
             return;
         }
         users.push(user);
-        fs.writeFile(filename, JSON.stringify(users), "utf8", () => {
+        fs.writeFile(filename, JSON.stringify(users, null, 4), err => {
+            if (err) return res.sendStatus(500);
             res.status(201).end();
         });
     })
-})
+});
+
+app.post("/auth/changeAccountInfo", (req, res) => {
+    const filename = __dirname + "/users.json";
+
+    fs.readFile(filename, "utf8", (err, data) => {
+        if (err) return res.sendStatus(500);
+
+        const users = JSON.parse(data);
+        const index = users.findIndex(u => u.id === req.body.id);
+
+        if (index < 0) return res.sendStatus(404);
+
+        if (users[index].password !== req.body.password) {
+            return res.sendStatus(401);
+        }
+
+        if (req.body.newUsername) users[index].username = req.body.newUsername;
+        if (req.body.newEmail) users[index].email = req.body.newEmail;
+        if (req.body.newPassword) users[index].password = req.body.newPassword;
+
+        fs.writeFile(filename, JSON.stringify(users, null, 4), err => {
+            if (err) return res.sendStatus(500);
+            res.status(201).end();
+        });
+    });
+});
 
 app.get('/recipes', (req, res) => {
     res.type('application/json');

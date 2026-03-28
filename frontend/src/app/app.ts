@@ -24,6 +24,7 @@ export class App {
     this.shouldBeScrollable = computed(() =>
       isActive("/register", this.router, matchOptions)()
       || isActive("/login", this.router, matchOptions)()
+      || isActive("/change-profile", this.router, matchOptions)()
     );
   }
 

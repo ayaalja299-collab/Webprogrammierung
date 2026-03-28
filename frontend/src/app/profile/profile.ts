@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import {ActiveUser, AuthService} from '../services/auth.service';
 import {Observable} from 'rxjs';
 import {AsyncPipe} from '@angular/common';
-import {Router} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-profile',
   imports: [
-    AsyncPipe
+    AsyncPipe,
+    RouterLink
   ],
   templateUrl: './profile.html',
   styleUrl: './profile.css',

@@ -40,6 +40,17 @@ export class AuthService {
     return this.http.post<ActiveUser>(url, {username, email, password});
   }
 
+  changeAccountInfo(password: string, newUsername?: string, newEmail?: string, newPassword?: string) {
+    const url = this.backendUrl + "/auth/changeAccountInfo";
+    this.activeUser$.subscribe(activeUser => {
+      if (!activeUser) {
+        // TODO: ERROR Handling
+        console.error("No active user found");
+      }
+      this.http.post<ActiveUser>(url, {id: activeUser!.id, password, newUsername, newEmail, newPassword}).subscribe();
+    });
+  }
+
   logout(): void {
     sessionStorage.removeItem("activeUser");
     this.activeUserSubject.next(undefined);

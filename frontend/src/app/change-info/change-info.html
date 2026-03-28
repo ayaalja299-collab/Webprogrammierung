@@ -1,0 +1,26 @@
+<div class="section-content">
+  <div class="info-form">
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+      <label>
+        Username
+        <input name="newUsername" [(ngModel)]="newUsername" placeholder="New Username..." />
+      </label>
+      <label>
+        E-Mail
+        <input name="newEmail" [(ngModel)]="newEmail" placeholder="New E-Mail..." />
+      </label>
+      <label>
+        Password
+        <input name="newPassword" [(ngModel)]="newPassword" placeholder="New Password..." />
+      </label>
+      <label>
+        CurrentPassword
+        <input name="password" [(ngModel)]="password" placeholder="Current Password..." />
+      </label>
+      <button [disabled]="form.invalid">Confirm</button>
+    </form>
+  </div>
+  <div class="info-image">
+    <img src="../../assets/change-profile-pic.jpeg" alt="Garlic Pesto Bread" />
+  </div>
+</div>
