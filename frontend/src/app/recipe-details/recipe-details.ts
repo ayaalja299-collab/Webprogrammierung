@@ -12,6 +12,7 @@ import { NgClass } from '@angular/common';
 })
 export class RecipeDetails implements OnInit {
   recipe: Recipe | undefined;
+  isFavorite: boolean | undefined = undefined;
 
   constructor(
     private readonly cdr: ChangeDetectorRef,
@@ -25,6 +26,21 @@ export class RecipeDetails implements OnInit {
     this.recipesService.getRecipeById(recipeId).subscribe((recipe) => {
       this.recipe = recipe;
       this.cdr.markForCheck();
+
+      this.recipesService.isRecipeFavorited(recipeId).subscribe(isFavorite => {
+        this.isFavorite = isFavorite;
+        this.cdr.markForCheck();
+      });
     });
+  }
+
+  switchFavoriteState() {
+    this.recipesService.switchFavoriteStateOfRecipe(this.recipe!.id)
+      .subscribe(() => {
+        this.recipesService.isRecipeFavorited(this.recipe!.id).subscribe(isFavorite => {
+          this.isFavorite = isFavorite;
+          this.cdr.markForCheck();
+        });
+      });
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {Observable, switchMap, throwError} from 'rxjs';
+import {map, Observable, switchMap, take, tap, throwError} from 'rxjs';
 import {AuthService} from './auth.service';
 
 export interface Recipe {
@@ -51,6 +51,36 @@ export class RecipesService {
             return this.http.get<Recipe[]>(manyRecipesUrl, { params });
           })
         );
+      })
+    );
+  }
+
+  isRecipeFavorited(recipeId: number): Observable<boolean> {
+    const url = this.backendUrl + "/favorites";
+
+    return this.authService.activeUser$.pipe(
+      switchMap(user => {
+        if (!user) {
+          return throwError(() => new Error("No user logged in"));
+        }
+
+        return this.http.get<number[]>(`${url}/${user.id}`).pipe(
+            map(ids =>  !!ids.find(id => id === +recipeId))
+        );
+      })
+    );
+  }
+
+  switchFavoriteStateOfRecipe(recipeId: number): Observable<void> {
+    const url = this.backendUrl + "/switch-favorites/" + recipeId;
+
+    return this.authService.activeUser$.pipe(
+      switchMap(user => {
+        if(!user) {
+          return throwError(() => new Error("No user logged in"));
+        }
+
+        return this.http.post<void>(url, {id: user.id});
       })
     );
   }

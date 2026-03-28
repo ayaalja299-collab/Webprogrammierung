@@ -11,6 +11,22 @@
           <span class="chip">Recipe</span>
         </div>
       </div>
+      @if (isFavorite == undefined) {
+      } @else if (isFavorite) {
+        <label>
+          <button (click)="switchFavoriteState()">
+            <img class="favorite-logo" src="assets/heart_full.png"  alt="remove from favorites"/>
+          </button>
+          <span>unfavorite</span>
+        </label>
+      } @else {
+        <label>
+          <button (click)="switchFavoriteState()">
+            <img class="favorite-logo" src="assets/heart_empty.png "  alt="add to favorite"/>
+          </button>
+          <span>add to favorites</span>
+        </label>
+      }
     </div>
 
     <div class="detail-content">

@@ -114,6 +114,39 @@ app.get("/favorites/:id", (req, res) => {
     });
 });
 
+app.post("/switch-favorites/:id", (req, res) => {
+    const usersFilename = __dirname + "/users.json";
+    const recipesFilename = __dirname + "/recipes.json";
+
+    fs.readFile(recipesFilename, (err, data) => {
+        const recipe = JSON.parse(data).find(item => item.id === +req.params.id);
+        if (!recipe) res.status(404).end();
+    });
+
+    fs.readFile(usersFilename, (err, data) => {
+        if (err) return res.sendStatus(500);
+
+        const users = JSON.parse(data);
+        const index = users.findIndex(u => u.id === req.body.id);
+
+        if (index < 0) return res.sendStatus(404);
+
+        let newFavorites = [];
+        users[index].favorites.forEach(fav => {
+            if (fav !== +req.params.id) {
+                newFavorites.push(fav);
+            }
+        });
+        if (users[index].favorites.length === newFavorites.length) newFavorites.push(+req.params.id);
+        users[index].favorites = newFavorites;
+
+        fs.writeFile(usersFilename, JSON.stringify(users, null, 4), err => {
+            if (err) return res.sendStatus(500);
+            res.status(201).end();
+        });
+    });
+});
+
 app.get('/recipes', (req, res) => {
     res.type('application/json');
     fs.readFile(__dirname + '/recipes.json', 'utf8', (err, data) => {
