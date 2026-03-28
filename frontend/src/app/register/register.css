@@ -31,6 +31,7 @@
   width: 100%;
   box-sizing: border-box;
   padding: 0.75rem;
+  font-family: Arial, serif;
 }
 
 .register-form button {
