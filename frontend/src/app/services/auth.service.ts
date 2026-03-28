@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable, of, tap} from 'rxjs';
+import {BehaviorSubject, Observable, of, switchMap, take, tap} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 
 export interface ActiveUser {
@@ -42,13 +42,29 @@ export class AuthService {
 
   changeAccountInfo(password: string, newUsername?: string, newEmail?: string, newPassword?: string) {
     const url = this.backendUrl + "/auth/changeAccountInfo";
-    this.activeUser$.subscribe(activeUser => {
-      if (!activeUser) {
-        // TODO: ERROR Handling
-        console.error("No active user found");
-      }
-      this.http.post<ActiveUser>(url, {id: activeUser!.id, password, newUsername, newEmail, newPassword}).subscribe();
-    });
+
+    return this.activeUser$.pipe(
+      take(1),
+      switchMap(activeUser => {
+        if (!activeUser) {
+          throw new Error("No active user found");
+        }
+
+        return this.http.post<ActiveUser>(url, {
+          id: activeUser.id,
+          password,
+          newUsername,
+          newEmail,
+          newPassword
+        })
+          .pipe(
+            tap(user => {
+              this.activeUserSubject.next(user);
+              sessionStorage.setItem("activeUser", JSON.stringify(user));
+            })
+          );
+      })
+    );
   }
 
   logout(): void {

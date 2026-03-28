@@ -30,6 +30,9 @@ export class ChangeInfo {
       // TODO Handle this!
       console.error("if-path not implemented");
     }
-    this.authService.changeAccountInfo(this.password, this.newUsername, this.newEmail, this.newPassword);
+    this.authService.changeAccountInfo(this.password, this.newUsername, this.newEmail, this.newPassword)
+      .subscribe(() => {
+        this.router.navigate(["/"]);
+      })
   }
 }

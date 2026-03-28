@@ -92,6 +92,11 @@ app.post("/auth/changeAccountInfo", (req, res) => {
 
         fs.writeFile(filename, JSON.stringify(users, null, 4), err => {
             if (err) return res.sendStatus(500);
+            res.json({
+                id: users[index].id,
+                username: users[index].username,
+                email: users[index].email
+            })
             res.status(201).end();
         });
     });
