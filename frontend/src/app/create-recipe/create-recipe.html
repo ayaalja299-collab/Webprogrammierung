@@ -11,11 +11,11 @@
       </label>
       <label>
         Ingredients
-        <input name="ingredients" [(ngModel)]="ingredients" required placeholder="1 tbsp Cumin, 5 other things, ..." />
+        <textarea name="ingredients" [(ngModel)]="ingredients" required placeholder="1 tbsp Cumin, 5 other things, ..."></textarea>
       </label>
       <label>
         Instructions
-        <input name="instructions" [(ngModel)]="instructions" required placeholder="First, do one thing, then another..." />
+        <textarea name="instructions" [(ngModel)]="instructions" required placeholder="First, do one thing, then another..."></textarea>
       </label>
       <label>
         ImagePath
@@ -24,7 +24,7 @@
       <button [disabled]="form.invalid">Create</button>
     </form>
   </div>
-  <div>
+  <div class="creation-image">
     <img src="assets/creation-pic.jpg" alt="Yummy Bacon" />
   </div>
 </div>
