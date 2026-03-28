@@ -43,6 +43,33 @@ app.post("/auth/login", (req, res) => {
    })
 });
 
+app.post("/auth/register", (req, res) => {
+    const user = {
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
+    };
+    const filename = __dirname + "/users.json";
+
+    res.type("application/json");
+    fs.readFile(filename, (err, data) => {
+        const users = JSON.parse(data);
+        user.id = users.length;
+        if (users.find(u => u.username === user.username)) {
+            res.status(401).end("Username already exists");
+            return;
+        }
+        if (users.find(u => u.email === user.email)) {
+            res.status(401).end("Email already exists");
+            return;
+        }
+        users.push(user);
+        fs.writeFile(filename, JSON.stringify(users), "utf8", () => {
+            res.status(201).end();
+        });
+    })
+})
+
 app.get('/recipes', (req, res) => {
     res.type('application/json');
     fs.readFile(__dirname + '/recipes.json', 'utf8', (err, data) => {

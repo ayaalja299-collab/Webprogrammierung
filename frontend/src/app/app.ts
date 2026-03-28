@@ -1,4 +1,4 @@
-import {Component, Signal, signal} from '@angular/core';
+import {Component, computed, Signal, signal} from '@angular/core';
 import {isActive, Router, RouterOutlet} from '@angular/router';
 import {Header} from './header/header';
 
@@ -14,12 +14,17 @@ export class App {
   shouldBeScrollable: Signal<boolean>;
 
   constructor(private readonly router: Router) {
-    this.shouldBeScrollable = isActive("/login", this.router, {
+    const matchOptions = {
       paths: "subset",
       queryParams: "ignored",
       fragment: "ignored",
       matrixParams: "ignored"
-    });
+    } as const;
+
+    this.shouldBeScrollable = computed(() =>
+      isActive("/register", this.router, matchOptions)()
+      || isActive("/login", this.router, matchOptions)()
+    );
   }
 
 }

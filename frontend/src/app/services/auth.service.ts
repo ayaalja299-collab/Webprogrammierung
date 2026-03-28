@@ -35,6 +35,11 @@ export class AuthService {
     );
   }
 
+  register(username: string, email: string, password: string) {
+    const url = this.backendUrl + "/auth/register";
+    return this.http.post<ActiveUser>(url, {username, email, password});
+  }
+
   logout(): void {
     sessionStorage.removeItem("activeUser");
     this.activeUserSubject.next(undefined);

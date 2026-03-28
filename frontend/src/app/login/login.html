@@ -9,7 +9,8 @@
         Password
         <input name="password" [(ngModel)]="password" required placeholder="Password..." />
       </label>
-      <button [disabled]="form.invalid">Submit</button>
+      <button [disabled]="form.invalid">Login</button>
+      <button routerLink="/register">No account?<br />register instead</button>
     </form>
   </div>
   <div class="login-image">
