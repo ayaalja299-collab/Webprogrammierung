@@ -36,8 +36,25 @@
 
 .info-form button {
   background: rgba(50, 50, 50, 0.3);
+  color: var(--black);
   min-height: 3rem;
   border-radius: 0.75rem;
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid #e53935;
+  background: #fff5f5;
+}
+
+input.ng-valid.ng-touched,
+textarea.ng-valid.ng-touched {
+  border: 1px solid #43a047;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .info-image {
