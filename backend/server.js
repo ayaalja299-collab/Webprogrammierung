@@ -6,9 +6,9 @@ const fs = require("fs");
 app.use(express.json());
 app.use(cors());
 
+/*
 app.get('/users', (req, res) => {
     res.type('application/json');
-    console.log("GET /users");
     fs.readFile(__dirname + '/users.json', 'utf8', (err, data) => {
         res.send(data);
     });
@@ -24,6 +24,23 @@ app.get('/users/:id', (req, res) => {
             res.status(404).end();
         }
     });
+});
+ */
+
+app.post("/auth/login", (req, res) => {
+   res.type("application/json");
+   fs.readFile(__dirname + "/users.json", (err, data) => {
+       const user = JSON.parse(data).find(user => user.username === req.body.username);
+       if (!user) {
+           res.status(401).end();
+           return;
+       }
+       if (user.password !== req.body.password) {
+           res.status(401).end();
+           return;
+       }
+       res.json({ id: user.id, username: user.username, email: user.email });
+   })
 });
 
 app.get('/recipes', (req, res) => {
