@@ -1,0 +1,18 @@
+<div class="section-content">
+  <div class="login-form">
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+      <label>
+        Username
+        <input name="username" [(ngModel)]="username" required placeholder="Username..." />
+      </label>
+      <label>
+        Password
+        <input name="password" [(ngModel)]="password" required placeholder="Password..." />
+      </label>
+      <button [disabled]="form.invalid">Submit</button>
+    </form>
+  </div>
+  <div class="login-image">
+    <img src="assets/chocolate-cake.jpg"  alt="Chocolate Cake"/>
+  </div>
+</div>

@@ -1,2 +1,6 @@
-<app-header />
-<router-outlet />
+<div class="app-shell" [class.non-scrollable]="shouldBeScrollable()">
+  <app-header />
+  <main class="app-main">
+    <router-outlet />
+  </main>
+</div>
