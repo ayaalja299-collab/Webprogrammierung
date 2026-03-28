@@ -1,11 +1,11 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, RouterLink} from '@angular/router';
 import { Recipe, RecipesService } from '../services/recipes.service';
 import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-recipe-details',
-  imports: [NgClass],
+  imports: [NgClass, RouterLink],
   templateUrl: './recipe-details.html',
   styleUrl: './recipe-details.css',
   standalone: true,

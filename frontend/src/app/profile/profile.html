@@ -1,0 +1,14 @@
+<div class="section-content">
+  <h3>Profile</h3>
+  <div class="profile-info-container">
+    <div class="info-field">
+      <span>Username</span>
+      <p>{{ (activeUser$ | async)!.username }}</p>
+    </div>
+    <div class="info-field">
+      <span>E-Mail</span>
+      <p>{{ (activeUser$ | async)!.email }}</p>
+    </div>
+  </div>
+  <button (click)="logout()">Logout</button>
+</div>

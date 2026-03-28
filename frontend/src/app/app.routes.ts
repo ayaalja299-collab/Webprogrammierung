@@ -3,6 +3,7 @@ import {Home} from './home/home';
 import {Recipes} from './recipes/recipes';
 import {RecipeDetails} from './recipe-details/recipe-details'
 import {Login} from './login/login';
+import {Profile} from './profile/profile';
 
 export const routes: Routes = [
   {
@@ -22,5 +23,9 @@ export const routes: Routes = [
   {
     path: "login",
     component: Login
+  },
+  {
+    path: "profile",
+    component: Profile
   }
 ];

@@ -14,6 +14,7 @@ import {Router} from '@angular/router';
 export class Login {
   username = "";
   password = "";
+  // TODO: check inputs and give Feedback
 
   constructor(
     private readonly router: Router,
