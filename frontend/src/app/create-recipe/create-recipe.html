@@ -1,5 +1,5 @@
 <div class="section-content">
-  <div class="creation-form">
+  <div class="form-container">
     <form #form="ngForm" (ngSubmit)="onSubmit()">
       <label>
         Name
@@ -25,7 +25,7 @@
       <button [disabled]="form.invalid">Create</button>
     </form>
   </div>
-  <div class="creation-image">
+  <div class="form-image">
     <img src="assets/creation-pic.jpg" alt="Yummy Bacon" />
   </div>
 </div>

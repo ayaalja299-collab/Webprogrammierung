@@ -13,7 +13,7 @@ import {HttpErrorResponse} from '@angular/common/http';
     AsyncPipe
   ],
   templateUrl: './create-recipe.html',
-  styleUrl: './create-recipe.css',
+  styleUrls: ['./create-recipe.css', '../../shared/styles/form-common.css'],
 })
 export class CreateRecipe {
   name = "";

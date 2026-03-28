@@ -13,7 +13,7 @@ import {HttpErrorResponse} from '@angular/common/http';
     AsyncPipe
   ],
   templateUrl: './change-info.html',
-  styleUrl: './change-info.css',
+  styleUrls: ['./change-info.css', '../../shared/styles/form-common.css'],
 })
 export class ChangeInfo {
   password = "";

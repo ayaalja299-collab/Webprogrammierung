@@ -1,5 +1,5 @@
 <div class="section-content">
-  <div class="info-form">
+  <div class="form-container">
     <form #form="ngForm" (ngSubmit)="onSubmit()">
       <label>
         Username
@@ -21,7 +21,7 @@
       <button [disabled]="form.invalid">Confirm</button>
     </form>
   </div>
-  <div class="info-image">
+  <div class="form-image">
     <img src="../../assets/change-profile-pic.jpeg" alt="Garlic Pesto Bread" />
   </div>
 </div>

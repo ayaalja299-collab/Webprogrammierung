@@ -14,7 +14,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
     AsyncPipe
   ],
   templateUrl: './register.html',
-  styleUrl: './register.css',
+  styleUrls: ['./register.css', '../../shared/styles/form-common.css'],
 })
 export class Register {
   username = "";

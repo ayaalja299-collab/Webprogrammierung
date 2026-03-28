@@ -14,7 +14,7 @@ import {HttpErrorResponse} from '@angular/common/http';
     AsyncPipe
   ],
   templateUrl: './login.html',
-  styleUrl: './login.css',
+  styleUrls: ['./login.css', '../../shared/styles/form-common.css'],
 })
 export class Login {
   username = "";
