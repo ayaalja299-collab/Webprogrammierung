@@ -2,11 +2,15 @@ import { Component } from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../services/auth.service';
 import {FormsModule} from '@angular/forms';
+import {AsyncPipe} from '@angular/common';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-change-info',
   imports: [
-    FormsModule
+    FormsModule,
+    AsyncPipe
   ],
   templateUrl: './change-info.html',
   styleUrl: './change-info.css',
@@ -16,6 +20,9 @@ export class ChangeInfo {
   newUsername: string | undefined;
   newEmail: string | undefined;
   newPassword: string | undefined;
+
+  errorMessageSubject = new BehaviorSubject<string | undefined>(undefined);
+  errorMessage$: Observable<string | undefined> = this.errorMessageSubject.asObservable();
 
   constructor(
     private readonly router: Router,
@@ -27,12 +34,17 @@ export class ChangeInfo {
     if (this.newPassword === "") this.newPassword = undefined;
 
     if (!this.newPassword && !this.newUsername && !this.newEmail) {
-      // TODO Handle this!
-      console.error("if-path not implemented");
+      this.errorMessageSubject.next("There are no changes");
+      return;
     }
     this.authService.changeAccountInfo(this.password, this.newUsername, this.newEmail, this.newPassword)
-      .subscribe(() => {
-        this.router.navigate(["/"]);
-      })
+      .subscribe({
+        next: () => this.router.navigate(["/login"]),
+        error: err => {
+          if (err instanceof HttpErrorResponse) {
+            this.errorMessageSubject.next(err.error);
+          }
+        }
+      });
   }
 }

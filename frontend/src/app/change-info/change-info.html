@@ -17,6 +17,7 @@
         CurrentPassword
         <input name="password" [(ngModel)]="password" required placeholder="Current Password..." />
       </label>
+      <span>{{ errorMessage$ | async }}</span>
       <button [disabled]="form.invalid">Confirm</button>
     </form>
   </div>

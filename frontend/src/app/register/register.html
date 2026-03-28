@@ -13,6 +13,7 @@
         Password
         <input name="password" [(ngModel)]="password" required placeholder="Password..." />
       </label>
+      <span>{{ errorMessage$ | async }}</span>
       <button [disabled]="form.invalid">Register</button>
       <button routerLink="/login">Already Registered?<br />Login instead</button>
     </form>

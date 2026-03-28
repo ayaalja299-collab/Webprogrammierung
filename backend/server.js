@@ -11,11 +11,11 @@ app.post("/auth/login", (req, res) => {
    fs.readFile(__dirname + "/users.json", (err, data) => {
        const user = JSON.parse(data).find(user => user.username === req.body.username);
        if (!user) {
-           res.status(401).end();
+           res.status(401).end("Wrong username or password");
            return;
        }
        if (user.password !== req.body.password) {
-           res.status(401).end();
+           res.status(401).end("Wrong username or password");
            return;
        }
        res.json({ id: user.id, username: user.username, email: user.email, isAdmin: user.admin });
@@ -37,16 +37,16 @@ app.post("/auth/register", (req, res) => {
         const users = JSON.parse(data);
         user.id = users.length + 1;
         if (users.find(u => u.username === user.username)) {
-            res.status(401).end("Username already exists");
+            res.status(409).end("Username already exists.");
             return;
         }
         if (users.find(u => u.email === user.email)) {
-            res.status(401).end("Email already exists");
+            res.status(409).end("Email already exists.");
             return;
         }
         users.push(user);
         fs.writeFile(filename, JSON.stringify(users, null, 4), err => {
-            if (err) return res.sendStatus(500);
+            if (err) return res.status(500).end("Server error: " + err.message);
             res.status(201).end();
         });
     })
@@ -56,15 +56,15 @@ app.post("/auth/changeAccountInfo", (req, res) => {
     const filename = __dirname + "/users.json";
 
     fs.readFile(filename, "utf8", (err, data) => {
-        if (err) return res.sendStatus(500);
+        if (err) return res.status(500).end("Server error: " + err.message);
 
         const users = JSON.parse(data);
         const index = users.findIndex(u => u.id === req.body.id);
 
-        if (index < 0) return res.sendStatus(404);
+        if (index < 0) return res.status(404).end("User does not exist.");
 
         if (users[index].password !== req.body.password) {
-            return res.sendStatus(401);
+            return res.status(401).end("Wrong credentials.");
         }
 
         if (req.body.newUsername) users[index].username = req.body.newUsername;
@@ -72,7 +72,7 @@ app.post("/auth/changeAccountInfo", (req, res) => {
         if (req.body.newPassword) users[index].password = req.body.newPassword;
 
         fs.writeFile(filename, JSON.stringify(users, null, 4), err => {
-            if (err) return res.sendStatus(500);
+            if (err) return res.stauts(500).end("Server error: " + err.message);
             res.json({
                 id: users[index].id,
                 username: users[index].username,
@@ -147,11 +147,12 @@ app.post("/recipes/create", (req, res) => {
 
     res.type("application/json");
     fs.readFile(filename, (err, data) => {
+        if (err) return res.status(500).end("Server error: " + err.message);
         const recipes = JSON.parse(data);
         recipe.id = recipes.length + 1;
         recipes.push(recipe);
         fs.writeFile(filename, JSON.stringify(recipes, null, 4), err => {
-            if (err) return res.sendStatus(500);
+            if (err) return res.status(500).end("Server error: " + err.message);
             res.status(201).end();
         });
     });

@@ -21,6 +21,7 @@
         ImagePath
         <input name="imagePath" [(ngModel)]="imagePath" placeholder="optional path to image..." />
       </label>
+      <span>{{ errorMessage$ | async }}</span>
       <button [disabled]="form.invalid">Create</button>
     </form>
   </div>
