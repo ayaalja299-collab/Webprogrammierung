@@ -2,6 +2,7 @@
     {
         "id": 1,
         "name": "Chocolate Cake",
+        "description": "Moist, rich chocolate layer cake with a tender crumb.",
         "ingredients": [
             "2 cups all-purpose flour",
             "1 3/4 cups sugar",
@@ -15,11 +16,13 @@
             "2 teaspoons vanilla extract",
             "1 cup boiling water"
         ],
-        "instructions": "Preheat oven to 350°F (175°C). Grease and flour two 9-inch round baking pans. In a large bowl, stir together the flour, sugar, cocoa, baking powder, baking soda, and salt. Add the eggs, milk, oil, and vanilla. Beat on medium speed for 2 minutes. Stir in the boiling water (batter will be thin). Pour batter into prepared pans. Bake for 30-35 minutes or until a toothpick inserted into the center comes out clean. Cool for 10 minutes; remove from pans to wire racks. Cool completely."
+        "instructions": "Preheat the oven to 350°F (175°C). Grease and flour two 9-inch round baking pans. In a large bowl, whisk together flour, sugar, cocoa, baking powder, baking soda, and salt. Add eggs, milk, oil, and vanilla; beat on medium speed for 2 minutes. Stir in the boiling water (batter will be thin). Divide batter between pans. Bake 30–35 minutes, or until a toothpick inserted in the center comes out clean. Cool 10 minutes in pans, then turn out onto wire racks and cool completely.",
+        "imagePath": "assets/chocolate-cake.jpg"
     },
     {
         "id": 2,
         "name": "Spaghetti Carbonara",
+        "description": "Classic creamy Roman pasta with pancetta, egg, and Parmesan.",
         "ingredients": [
             "200g spaghetti",
             "100g pancetta",
@@ -29,11 +32,13 @@
             "Salt and black pepper to taste",
             "Fresh parsley for garnish"
         ],
-        "instructions": "Cook spaghetti according to package instructions until al dente. In a pan, cook pancetta over medium heat until crispy. Add minced garlic and cook for 1 minute. In a bowl, whisk together eggs and grated Parmesan cheese. Drain spaghetti and return to pot. Quickly add the pancetta and garlic mixture, then pour in the egg and cheese mixture. Toss everything together until the eggs are cooked by the residual heat of the pasta. Season with salt and black pepper. Garnish with fresh parsley before serving."
+        "instructions": "Cook the spaghetti in salted water until al dente. In a skillet, cook pancetta over medium heat until crispy; add garlic and cook 1 minute. In a bowl, whisk eggs with Parmesan. Drain spaghetti and return to the warm pot. Quickly add pancetta and garlic, then pour in the egg-cheese mixture, tossing vigorously so the residual heat creates a silky sauce. Season with salt and plenty of black pepper. Garnish with parsley.",
+        "imagePath": "assets/spaghetti carbonara.jpg"
     },
     {
         "id": 3,
         "name": "Ratatouille",
+        "description": "Provençal vegetable bake with eggplant, zucchini, peppers, and tomatoes.",
         "ingredients": [
             "1 eggplant, diced",
             "1 zucchini, diced",
@@ -45,6 +50,139 @@
             "Salt and black pepper to taste",
             "Fresh basil for garnish"
         ],
-        "instructions": "Preheat oven to 375°F (190°C). In a large skillet, heat olive oil over medium heat. Add diced onion and minced garlic, and sauté until softened. Add diced eggplant, zucchini, and bell pepper. Cook until vegetables are tender. Stir in diced tomatoes and season with salt and black pepper. Transfer the vegetable mixture to a baking dish and bake for 25-30 minutes until the vegetables are fully cooked and the flavors have melded together. Garnish with fresh basil before serving."
+        "instructions": "Preheat oven to 375°F (190°C). Heat olive oil in a large skillet over medium heat. Sauté onion and garlic until softened. Add eggplant, zucchini, and bell pepper; cook until just tender. Stir in tomatoes, season with salt and pepper. Transfer to a baking dish and bake 25–30 minutes, until vegetables are fully tender and flavors have melded. Garnish with fresh basil.",
+        "imagePath": "assets/Ratatouille.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Lemon Cheesecake",
+        "description": "Creamy lemon cheesecake on a crisp cookie crust.",
+        "ingredients": [
+            "200g butter cookies, finely crushed",
+            "80g unsalted butter, melted",
+            "600g cream cheese, room temperature",
+            "150g sugar",
+            "200g sour cream",
+            "3 large eggs",
+            "Zest and juice of 2 lemons",
+            "1 teaspoon vanilla extract",
+            "Pinch of salt"
+        ],
+        "instructions": "Preheat oven to 320°F (160°C). Mix cookie crumbs with melted butter; press into a 24 cm springform and prebake 10 minutes. Beat cream cheese with sugar until smooth; mix in sour cream, vanilla, lemon zest and juice. Beat in eggs one at a time just until combined (avoid incorporating too much air). Pour filling over crust and bake 45–55 minutes until the center still slightly wobbles. Turn off oven, crack door, and cool 1 hour inside. Cool completely, then chill at least 4 hours (preferably overnight).",
+        "imagePath": "assets/Lemon Cheesecake.jpeg"
+    },
+    {
+        "id": 5,
+        "name": "Chicken Tikka Masala",
+        "description": "Marinated chicken in a spiced, creamy tomato sauce.",
+        "ingredients": [
+            "600g chicken breast, cut into chunks",
+            "150g Greek yogurt",
+            "2 tablespoons lemon juice",
+            "3 cloves garlic, minced",
+            "2 teaspoons grated ginger",
+            "2 teaspoons garam masala",
+            "1 teaspoon ground cumin",
+            "1 teaspoon sweet paprika",
+            "1 teaspoon salt",
+            "2 tablespoons oil or ghee",
+            "1 onion, finely diced",
+            "400g canned crushed tomatoes",
+            "200ml heavy cream or coconut milk",
+            "Fresh cilantro for garnish"
+        ],
+        "instructions": "Combine yogurt, lemon juice, garlic, ginger, garam masala, cumin, paprika, and salt. Marinate chicken for at least 30 minutes (better 2–4 hours). Heat oil/ghee; sear chicken in batches and set aside. In the same pan, sauté onion until translucent, add tomatoes and simmer 10 minutes. Stir in cream, return chicken, and simmer gently 8–10 minutes until cooked through. Garnish with cilantro; serve with rice or naan.",
+        "imagePath": "assets/Chicken Tikka Masala.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Quinoa Veggie Bowl",
+        "description": "Roasted veggie bowl with fluffy quinoa and tahini-lemon dressing.",
+        "ingredients": [
+            "200g quinoa, rinsed",
+            "400ml water or vegetable broth",
+            "1 sweet potato, diced",
+            "1 head broccoli, cut into florets",
+            "1 bell pepper, sliced",
+            "1 avocado, sliced",
+            "2 tablespoons olive oil",
+            "Salt and pepper",
+            "1 teaspoon smoked paprika (optional)",
+            "For the dressing: 2 tbsp tahini, 1 tbsp lemon juice, 1 tsp maple syrup, 1–2 tbsp water, salt"
+        ],
+        "instructions": "Preheat oven to 400°F (200°C). Toss sweet potato and bell pepper with 1 tbsp olive oil, salt, pepper, and smoked paprika; roast 20–25 minutes. Add broccoli to the tray for the final 10 minutes. Cook quinoa in water/broth: bring to a boil, then simmer 12–15 minutes; fluff. Whisk dressing ingredients. Assemble bowls with quinoa, roasted veggies, and avocado; drizzle with dressing.",
+        "imagePath": ""
+    },
+    {
+        "id": 7,
+        "name": "Caprese Garlic Bread (Side)",
+        "description": "Toasted garlic baguette topped with mozzarella, tomatoes, and basil.",
+        "ingredients": [
+            "1 baguette",
+            "3 tablespoons softened butter",
+            "2 cloves garlic, pressed",
+            "1 ball mozzarella, sliced",
+            "2 tomatoes, sliced",
+            "Fresh basil",
+            "2 tablespoons olive oil",
+            "Salt and pepper",
+            "Balsamic glaze (optional)"
+        ],
+        "instructions": "Preheat oven to 400°F (200°C). Halve the baguette lengthwise. Mix butter with garlic and spread on cut sides. Top with mozzarella and tomato slices; season with salt and pepper and drizzle with olive oil. Bake 10–12 minutes until cheese melts. Finish with basil and optional balsamic glaze.",
+        "imagePath": "assets/Caprese-Garlic-Bread .jpg"
+    },
+    {
+        "id": 8,
+        "name": "Creamy Mushroom Risotto",
+        "description": "Silky Arborio rice with sautéed mushrooms and Parmesan.",
+        "ingredients": [
+            "250g Arborio rice",
+            "200g mushrooms, sliced",
+            "1 small onion, finely diced",
+            "2 cloves garlic, minced",
+            "800ml hot vegetable broth",
+            "100ml white wine (optional)",
+            "40g freshly grated Parmesan",
+            "2 tablespoons butter",
+            "1 tablespoon olive oil",
+            "Salt and black pepper",
+            "Parsley for garnish"
+        ],
+        "instructions": "Heat olive oil and 1 tbsp butter in a pot; sauté onion until translucent, add garlic briefly. Stir in rice and toast 1–2 minutes; deglaze with wine if using. Add hot broth gradually, stirring often, until rice is creamy and al dente (18–20 minutes). In a separate pan, sauté mushrooms in 1 tbsp butter; season. Stir mushrooms and Parmesan into the risotto; adjust seasoning. Garnish with parsley.",
+        "imagePath": "assets/Creamy Mushroom Risotto.jpg"
+    },
+    {
+        "id": 9,
+        "name": "Harissa Roasted Carrots (Side)",
+        "description": "Sweet-spicy roasted carrots with harissa and a yogurt-mint finish.",
+        "ingredients": [
+            "600g carrots, halved lengthwise",
+            "2 tablespoons olive oil",
+            "1 tablespoon harissa paste",
+            "1 teaspoon honey or maple syrup",
+            "1/2 teaspoon ground cumin",
+            "Salt and pepper",
+            "Yogurt and chopped mint for serving (optional)"
+        ],
+        "instructions": "Preheat oven to 400°F (200°C). Mix oil, harissa, honey, cumin, salt, and pepper. Toss carrots with the mixture and spread on a baking sheet. Roast 25–30 minutes until tender and lightly caramelized. Serve with yogurt and mint if desired.",
+        "imagePath": ""
+    },
+    {
+        "id": 10,
+        "name": "Apple Crumble",
+        "description": "Classic warm apple dessert with a crunchy oat crumble.",
+        "ingredients": [
+            "5 apples (e.g., Elstar), peeled and sliced",
+            "1 tablespoon lemon juice",
+            "2 tablespoons sugar",
+            "1 teaspoon cinnamon",
+            "120g flour",
+            "80g rolled oats",
+            "100g brown sugar",
+            "120g cold unsalted butter, cubed",
+            "Pinch of salt"
+        ],
+        "instructions": "Preheat oven to 350°F (180°C). Toss apples with lemon juice, 2 tbsp sugar, and cinnamon; place in a baking dish. In a bowl, mix flour, oats, brown sugar, and salt; rub in butter until coarse crumbs form. Scatter crumble over apples and bake 30–35 minutes until golden and bubbling. Serve warm (great with vanilla ice cream).",
+        "imagePath": "assets/Apple Crumble.jpg"
     }
 ]

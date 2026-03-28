@@ -17,7 +17,7 @@ app.get('/users', (req, res) => {
 app.get('/users/:id', (req, res) => {
     res.type('application/json');
     fs.readFile(__dirname + '/users.json', 'utf8', (err, data) => {
-        const user = JSON.parse(data).find(item => item.id == req.params.id);
+        const user = JSON.parse(data).find(item => item.id === +req.params.id);
         if (user) {
             res.json(user);
         } else {
@@ -26,7 +26,7 @@ app.get('/users/:id', (req, res) => {
     });
 });
 
-app.get('/recipes',(req, res) => {
+app.get('/recipes', (req, res) => {
     res.type('application/json');
     fs.readFile(__dirname + '/recipes.json', 'utf8', (err, data) => {
         res.send(data);
@@ -36,7 +36,7 @@ app.get('/recipes',(req, res) => {
 app.get('/recipes/:id', (req, res) => {
     res.type('application/json');
     fs.readFile(__dirname + '/recipes.json', 'utf8', (err, data) => {
-        const recipe = JSON.parse(data).find(item => item.id == req.params.id);
+        const recipe = JSON.parse(data).find(item => item.id === +req.params.id);
         if (recipe) {
             res.json(recipe);
         } else {

@@ -1,11 +1,11 @@
-<a href="rezepte.html" class="back-link slide-in-left">←Back to all recipes</a>
+<a href="" class="back-link slide-in-left">←Back to all recipes</a>
 
-<article id="recipe-detail" class="recipe-detail-card pop-in shimmer">
+<article id="recipe-detail" class="recipe-detail-card pop-in" [ngClass]="{ shimmer: !recipe }">
   <div class="detail-header">
-    <img id="recipe-image" src="images/cake.png" alt="Rezept Bild"/>
+    <img id="recipe-image" src="{{ recipe?.imagePath  ?? 'assets/placeholder.png' }}" alt="{{ recipe?.name }}"/>
     <div class="detail-title">
-      <h1 id="recipe-name">Loading...</h1>
-      <p id="recipe-desc">Please wait</p>
+      <h1 id="recipe-name">{{ recipe?.name ?? "Loading..."  }}</h1>
+      <p id="recipe-desc">{{ recipe?.description ?? "Please wait" }}</p>
       <div class="chips">
         <span class="chip">Recipe</span>
       </div>
@@ -14,13 +14,19 @@
 
   <div class="detail-content">
     <section class="ingredients zoom-in">
-      <h2>Ingridients</h2>
-      <ul id="ingredients-list"></ul>
+      <h2>Ingredients</h2>
+      <ul id="ingredients-list">
+        @for (ingredient of recipe?.ingredients; track ingredient; let index = $index) {
+          <li class="ingredient-item reveal-item" [style.animation-delay]="index * 60 + 'ms'">
+            {{ ingredient }}
+          </li>
+        }
+      </ul>
     </section>
 
     <section class="instructions fade-in-block">
       <h2>Preparation</h2>
-      <p id="instructions-text"></p>
+      <p id="instructions-text">{{ recipe?.instructions }}</p>
     </section>
   </div>
 </article>

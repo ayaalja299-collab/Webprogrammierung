@@ -26,9 +26,7 @@
               }
             ],
             "scripts": [
-              "src/scripts/home.js",
-              "src/scripts/recipes.js",
-              "src/scripts/recipe-details.js"
+              "src/scripts/home.js"
             ],
             "styles": [
               "src/styles.css"

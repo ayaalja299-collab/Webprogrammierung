@@ -29,15 +29,15 @@
 
 /* set images (ensure files exist at images/cake.png etc) */
 #slider-img1 {
-  background-image: url("/assets/cake.png");
+  background-image: url("/assets/chocolate-cake.jpg");
 }
 
 #slider-img2 {
-  background-image: url("/assets/rat.png");
+  background-image: url("/assets/Ratatouille.jpg");
 }
 
 #slider-img3 {
-  background-image: url("/assets/apple.png");
+  background-image: url("/assets/Apple Crumble.jpg");
 }
 
 /* nav buttons */

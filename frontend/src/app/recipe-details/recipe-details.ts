@@ -1,18 +1,30 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import * as script from "../../scripts/recipe-details.js";
+import { Recipe, RecipesService } from '../services/recipes.service';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-recipe-details',
-  imports: [],
+  imports: [NgClass],
   templateUrl: './recipe-details.html',
   styleUrl: './recipe-details.css',
+  standalone: true,
 })
 export class RecipeDetails implements OnInit {
-  private activatedRoute = inject(ActivatedRoute);
+  recipe: Recipe | undefined;
 
-  async ngOnInit() {
-    console.log(this.activatedRoute);
-    await script.initDetails();
+  constructor(
+    private readonly cdr: ChangeDetectorRef,
+    private readonly route: ActivatedRoute,
+    private readonly recipesService: RecipesService,
+  ) {}
+
+  ngOnInit() {
+    const recipeId: number = +this.route.toString().split('/')[1][0]; // TODO: Might need rework
+
+    this.recipesService.getRecipeById(recipeId).subscribe((recipe) => {
+      this.recipe = recipe;
+      this.cdr.markForCheck();
+    });
   }
 }

@@ -24,5 +24,12 @@
 </div>
 
 <div id="recipes-grid" class="recipes-grid fade-in-grid">
-  <!-- Karten werden per JS (rezepte.js) eingefügt -->
+  @for (recipe of recipes; track recipe.id) {
+    <app-recipe-card
+      [altText]="recipe.name"
+      [description]="recipe.description"
+      [id]="recipe.id"
+      [imageSource]="recipe.imagePath"
+      [title]="recipe.name" />
+  }
 </div>
