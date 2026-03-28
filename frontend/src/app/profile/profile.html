@@ -1,5 +1,5 @@
 <div class="section-content">
-  <h3>Profile</h3>
+  <h1>Profile</h1>
   <div class="profile-info-container">
     <div class="info-field">
       <span>Username</span>
@@ -10,6 +10,8 @@
       <p>{{ (activeUser$ | async)!.email }}</p>
     </div>
   </div>
-  <button routerLink="/change-profile">Edit your Profile</button>
-  <button (click)="logout()">Logout</button>
+  <div class="button-container">
+    <button routerLink="/change-profile">Edit your Profile</button>
+    <button (click)="logout()">Logout</button>
+  </div>
 </div>

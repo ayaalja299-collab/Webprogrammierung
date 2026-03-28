@@ -1,0 +1,34 @@
+.profile-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.info-field {
+  margin-left: 1rem;
+}
+
+.info-field span {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.info-field p {
+  font-size: 1rem;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-left: 1rem;
+}
+
+.button-container button {
+  padding: 0.5rem 1rem;
+  border: #222222 solid 1px;
+  border-radius: 5px;
+}
