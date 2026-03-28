@@ -51,8 +51,13 @@ img {
 
 .section-content {
   max-width: var(--site-max-width);
-  margin: 0 auto;
+  margin: 0 auto 0 auto;
   padding: 20px;
+}
+
+.section-title {
+  font-size: var(--font-size-xxl);
+  margin-bottom: 40px;
 }
 
 * {

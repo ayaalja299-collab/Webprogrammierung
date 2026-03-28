@@ -102,6 +102,18 @@ app.post("/auth/changeAccountInfo", (req, res) => {
     });
 });
 
+app.get("/favorites/:id", (req, res) => {
+    res.type("application/json");
+    fs.readFile(__dirname + "/users.json", (err, data) => {
+        const user = JSON.parse(data).find(user => user.id === +req.params.id);
+        if (!user) {
+            res.status(401).end();
+            return;
+        }
+        res.send(user.favorites);
+    });
+});
+
 app.get('/recipes', (req, res) => {
     res.type('application/json');
     fs.readFile(__dirname + '/recipes.json', 'utf8', (err, data) => {
@@ -118,6 +130,20 @@ app.get('/recipes/:id', (req, res) => {
         } else {
             res.status(404).end();
         }
+    });
+});
+
+app.get("/many-recipes", (req, res) => {
+    fs.readFile(__dirname + "/recipes.json", "utf8", (err, data) => {
+        if (err) return res.status(500).send(err);
+
+        const ids = req.query.ids;
+        const requestedIds = Array.isArray(ids)
+            ? ids.map(Number)
+            : String(ids).split(",").map(Number);
+
+        const recipes = JSON.parse(data).filter(item => requestedIds.includes(item.id));
+        res.json(recipes);
     });
 });
 

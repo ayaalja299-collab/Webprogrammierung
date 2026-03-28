@@ -6,6 +6,7 @@ import {Login} from './login/login';
 import {Profile} from './profile/profile';
 import {Register} from './register/register';
 import {ChangeInfo} from './change-info/change-info';
+import {Favorites} from './favorites/favorites';
 
 export const routes: Routes = [
   {
@@ -37,5 +38,9 @@ export const routes: Routes = [
   {
     path: "change-profile",
     component: ChangeInfo
+  },
+  {
+    path: "favorites",
+    component: Favorites
   }
 ];

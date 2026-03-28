@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {Observable, switchMap, throwError} from 'rxjs';
+import {AuthService} from './auth.service';
 
 export interface Recipe {
   id: number;
@@ -17,7 +18,10 @@ export interface Recipe {
 export class RecipesService {
   private readonly backendUrl = "http://localhost:3000";
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private readonly http: HttpClient,
+    private readonly authService: AuthService
+  ) { }
 
   getRecipes(): Observable<Recipe[]> {
     const url = this.backendUrl + "/recipes";
@@ -29,5 +33,25 @@ export class RecipesService {
     const url = this.backendUrl + "/recipes/" + id;
 
     return  this.http.get<Recipe>(url);
+  }
+
+  getFavorites(): Observable<Recipe[]> {
+    const favoriteUrl = this.backendUrl + '/favorites';
+    const manyRecipesUrl = this.backendUrl + '/many-recipes';
+
+    return this.authService.activeUser$.pipe(
+      switchMap(user => {
+        if (!user) {
+          return throwError(() => new Error("No user logged in"));
+        }
+
+        return this.http.get<number[]>(`${favoriteUrl}/${user.id}`).pipe(
+          switchMap(ids => {
+            const params = new HttpParams().set("ids", ids.join(","));
+            return this.http.get<Recipe[]>(manyRecipesUrl, { params });
+          })
+        );
+      })
+    );
   }
 }
