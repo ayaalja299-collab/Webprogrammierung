@@ -26,7 +26,6 @@ export class Recipes implements OnInit {
           recipe.imagePath = "assets/placeholder.png";
         }
         this.recipes.push(recipe);
-        console.log(recipe);
       });
       this.cdr.detectChanges(); // refresh Template
     });
