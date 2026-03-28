@@ -20,7 +20,7 @@ export class RecipeDetails implements OnInit {
   ) {}
 
   ngOnInit() {
-    const recipeId: number = +this.route.toString().split('/')[1][0]; // TODO: Might need rework
+    const recipeId: number = this.route.snapshot.params["id"];
 
     this.recipesService.getRecipeById(recipeId).subscribe((recipe) => {
       this.recipe = recipe;
