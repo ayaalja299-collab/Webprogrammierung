@@ -76,8 +76,9 @@ app.post("/auth/changeAccountInfo", (req, res) => {
             res.json({
                 id: users[index].id,
                 username: users[index].username,
-                email: users[index].email
-            })
+                email: users[index].email,
+                isAdmin: users[index].admin
+            });
             res.status(201).end();
         });
     });

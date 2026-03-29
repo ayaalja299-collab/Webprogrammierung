@@ -51,17 +51,18 @@ export class AuthService {
           throw new Error("No active user found");
         }
 
-        return this.http.post<ActiveUser>(url, {
-          id: activeUser.id,
-          password,
-          newUsername,
-          newEmail,
-          newPassword
-        })
+        return this.http
+          .post<ActiveUser>(url, {
+            id: activeUser.id,
+            password,
+            newUsername,
+            newEmail,
+            newPassword,
+          })
           .pipe(
-            tap(user => {
+            tap((user) => {
               this.activeUserSubject.next(user);
-              sessionStorage.setItem("activeUser", JSON.stringify(user));
+              sessionStorage.setItem('activeUser', JSON.stringify(user));
             })
           );
       })

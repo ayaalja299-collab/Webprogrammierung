@@ -39,7 +39,7 @@ export class ChangeInfo {
     }
     this.authService.changeAccountInfo(this.password, this.newUsername, this.newEmail, this.newPassword)
       .subscribe({
-        next: () => this.router.navigate(["/login"]),
+        next: () => this.router.navigate(["/profile"]),
         error: err => {
           if (err instanceof HttpErrorResponse) {
             this.errorMessageSubject.next(err.error);
