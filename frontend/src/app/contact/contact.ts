@@ -1,9 +1,8 @@
-import { RouterLink } from '@angular/router';
 import { AfterViewInit, Component, ElementRef, OnDestroy, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-contact',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './contact.html',
   styleUrls: ['./contact.css'], // or .scss
 })

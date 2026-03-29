@@ -12,7 +12,12 @@
       <div class="wrapper-holder">
         @for (recipe of todaysRecipes; track recipe.id; let index = $index) {
           @if (index < 3) {
-            <div id="slider-img{{ index + 1 }}" class="slide" [style.background-image]="'url(' + recipe.imagePath + ')'">
+            <div
+              id="slider-img{{ index + 1 }}"
+              class="slide"
+              [style.background-image]="'url(' + recipe.imagePath + ')'"
+              [routerLink]="'/recipe-details/' + recipe.id"
+            >
               <div class="slide-content">
                 <h2>{{ recipe.name }}</h2>
                 <p>{{ recipe.description }}</p>
