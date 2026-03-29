@@ -1,6 +1,8 @@
 <div class="recipe-card">
-  <img src="{{ imageSource() }}" alt="{{ altText() }}" />
-  <h3>{{  title() }}</h3>
-  <p>{{ description() }}</p>
+  <div>
+    <img src="{{ imageSource() }}" alt="{{ altText() }}" />
+    <h3>{{  title() }}</h3>
+    <p>{{ description() }}</p>
+  </div>
   <a routerLink="/recipe-details/{{ id() }}" class="recipe-btn">View Recipe</a>
 </div>
