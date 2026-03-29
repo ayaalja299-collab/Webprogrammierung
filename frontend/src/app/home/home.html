@@ -14,8 +14,8 @@
   </div>
 </div>
 </section>*/-->
-  <div>
-    <div class="title1"><h1>Today's recipes</h1></div>
+  <div class="section-content">
+    <h1 class="section-title">Today's recipes</h1>
   </div>
   <div class="container">
     <div class="wrapper">
@@ -25,26 +25,16 @@
       <button class="arrow arrow-left">&#10094;</button>
 
       <div class="wrapper-holder">
-        <div id="slider-img1" class="slide">
-          <div class="slide-content">
-            <h2>Chocolate Cake</h2>
-            <p>Soft, rich and perfect for dessert lovers.</p>
-          </div>
-        </div>
-
-        <div id="slider-img2" class="slide">
-          <div class="slide-content">
-            <h2>Ratatouille</h2>
-            <p>A healthy vegetable dish full of flavor.</p>
-          </div>
-        </div>
-
-        <div id="slider-img3" class="slide">
-          <div class="slide-content">
-            <h2>Apple Crumble</h2>
-            <p>Classic pie with cinnamon and crispy crust.</p>
-          </div>
-        </div>
+        @for (recipe of todaysRecipes; track recipe.id; let index = $index) {
+          @if (index < 3) {
+            <div id="slider-img{{ index + 1 }}" class="slide" [style.background-image]="'url(' + recipe.imagePath + ')'">
+              <div class="slide-content">
+                <h2>{{ recipe.name }}</h2>
+                <p>{{ recipe.description }}</p>
+              </div>
+            </div>
+          }
+        }
       </div>
 
       <!-- RIGHT ARROW -->
@@ -67,39 +57,21 @@
 
     <!-- Neu: Button für alle Rezepte -->
     <div style="margin-bottom: 20px;">
-      <a href="recipes" class="recipe-btn">Show all recipes</a>
+      <a routerLink="recipes" class="recipe-btn">Show all recipes</a>
     </div>
 
     <div class="recipes-grid">
-
-      <app-recipe-card
-        imageSource="assets/chocolate-cake.jpg"
-        altText="Chocolate Cake"
-        title="Chocolate Cake"
-        description="Rich and fluffy chocolate cake perfect for dessert lovers."
-        id="1" />
-
-      <app-recipe-card
-        imageSource="assets/Ratatouille.jpg"
-        altText="Ratatouille"
-        title="Ratatouille"
-        description="A healthy French vegetable dish full of flavor."
-        id="3" />
-
-      <app-recipe-card
-        imageSource="assets/Apple Crumble.jpg"
-        altText="Apple Crumble"
-        title="Apple Pie"
-        description="Classic apple pie with cinnamon and a crispy crust."
-        id="10" />
-
-      <app-recipe-card
-        imageSource="assets/Chicken Tikka Masala.jpg"
-        altText="Chicken Tikka Masala"
-        title="Chicken Tikka Masala"
-        description="Grilled, yogurt-marinated chicken chunks simmered in a rich, creamy, and spiced tomato-based sauce."
-        id="4" />
-
+      @if (popularRecipes.length === 0) {
+        <span>Loading...</span>
+      }
+      @for (recipe of popularRecipes; track recipe.id) {
+        <app-recipe-card
+          [imageSource]="recipe.imagePath ?? '/assets/placeholder.png'"
+          [altText]="recipe.name"
+          [title]="recipe.name"
+          [description]="recipe.description"
+          [id]="recipe.id" />
+      }
     </div>
   </section>
 </main>

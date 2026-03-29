@@ -1,0 +1,9 @@
+.fade-in-grid { animation: fadeIn 500ms ease both; }
+
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,23%));
+  gap: calc(8% / 3);
+  max-width: 1200px;
+  margin: auto;
+}

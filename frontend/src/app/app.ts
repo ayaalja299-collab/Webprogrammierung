@@ -1,13 +1,34 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component, computed, Signal, signal} from '@angular/core';
+import {isActive, Router, RouterOutlet} from '@angular/router';
 import {Header} from './header/header';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header],
+  imports: [Header, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('frontend');
+  protected readonly title = signal('FOOD');
+
+  shouldBeScrollable: Signal<boolean>;
+
+  constructor(private readonly router: Router) {
+    const matchOptions = {
+      paths: "subset",
+      queryParams: "ignored",
+      fragment: "ignored",
+      matrixParams: "ignored"
+    } as const;
+
+    this.shouldBeScrollable = computed(
+      () =>
+        isActive('/register', this.router, matchOptions)() ||
+        isActive('/login', this.router, matchOptions)() ||
+        isActive('/change-profile', this.router, matchOptions)() ||
+        isActive('/create-recipe', this.router, matchOptions)() ||
+        isActive('/create-recipe', this.router, matchOptions)()
+    );
+  }
+
 }

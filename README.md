@@ -6,7 +6,7 @@
 - das Repository ist gecloned
 
 ## Installation & Start
-Die folgenden Anweisungen setzen voraus, dass sich der User im Projektverzeichnis befindet
+Die folgenden Anweisungen setzen voraus, dass sich der User im Projektverzeichnis befindet,
 und sind für Windows konzipiert. Unter anderen Betriebssystemen sind Abweichungen nicht ausgeschlossen.
 
 ### Backend
@@ -22,7 +22,7 @@ Das Backend sollte nun unter `http://localhost:3000/` laufen.
 ```cmd
 cd frontend
 npm install
-ng run start
+npm run start
 ```
 
 Das Frontend sollte nun unter `http://localhost:4200/` laufen.
