@@ -22,7 +22,7 @@ Das Backend sollte nun unter `http://localhost:3000/` laufen.
 ```cmd
 cd frontend
 npm install
-ng run start
+npm run start
 ```
 
 Das Frontend sollte nun unter `http://localhost:4200/` laufen.
