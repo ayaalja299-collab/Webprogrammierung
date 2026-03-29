@@ -1,0 +1,14 @@
+<div class="section-content">
+  <h1 class="section-title">My Favorites</h1>
+
+  <div class="recipes-grid fade-in-grid">
+    @for (recipe of favorites; track recipe.id) {
+      <app-recipe-card
+        [altText]="recipe.name"
+        [description]="recipe.description"
+        [id]="recipe.id"
+        [imageSource]="recipe.imagePath"
+        [title]="recipe.name" />
+    }
+  </div>
+</div>

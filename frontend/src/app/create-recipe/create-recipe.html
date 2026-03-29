@@ -1,0 +1,31 @@
+<div class="section-content">
+  <div class="form-container">
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+      <label>
+        Name
+        <input name="dish-name" [(ngModel)]="name" required placeholder="Yummy Bacon..." />
+      </label>
+      <label>
+        Description
+        <input name="description" [(ngModel)]="description" required placeholder="Explain the dish" />
+      </label>
+      <label>
+        Ingredients
+        <textarea name="ingredients" [(ngModel)]="ingredients" required placeholder="1 tbsp Cumin, 5 other things, ..."></textarea>
+      </label>
+      <label>
+        Instructions
+        <textarea name="instructions" [(ngModel)]="instructions" required placeholder="First, do one thing, then another..."></textarea>
+      </label>
+      <label>
+        ImagePath
+        <input name="imagePath" [(ngModel)]="imagePath" placeholder="optional path to image..." />
+      </label>
+      <span>{{ errorMessage$ | async }}</span>
+      <button [disabled]="form.invalid">Create</button>
+    </form>
+  </div>
+  <div class="form-image">
+    <img src="assets/creation-pic.jpg" alt="Yummy Bacon" />
+  </div>
+</div>

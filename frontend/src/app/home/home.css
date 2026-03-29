@@ -7,7 +7,7 @@
   width: 70vw;
   height: 70vh;
   box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-  margin: 5rem auto;
+  margin: 0 auto 5rem auto;
   overflow: hidden;
   border-radius: 15px;
 }
@@ -77,8 +77,7 @@
 }
 
 .section-title {
-  font-size: var(--font-size-xxl);
-  margin-bottom: 40px;
+
 }
 
 /* Grid layout */

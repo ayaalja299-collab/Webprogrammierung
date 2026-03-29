@@ -11,6 +11,8 @@
   --color4: #f3a6ba;
   --color5: #fec1b6;
   --color6: #feeddd;
+  --color-valid: #43a047;
+  --color-invalid: #e53935;
   /* Define font sizes */
   --font-size-s: 0.9rem;
   --font-size-n: 1rem;
@@ -51,8 +53,13 @@ img {
 
 .section-content {
   max-width: var(--site-max-width);
-  margin: 0 auto;
+  margin: 0 auto 0 auto;
   padding: 20px;
+}
+
+.section-title {
+  font-size: var(--font-size-xxl);
+  margin-bottom: 40px;
 }
 
 * {
