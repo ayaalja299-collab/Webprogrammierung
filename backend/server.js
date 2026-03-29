@@ -6,23 +6,126 @@ const fs = require("fs");
 app.use(express.json());
 app.use(cors());
 
-app.get('/users', (req, res) => {
-    res.type('application/json');
-    console.log("GET /users");
-    fs.readFile(__dirname + '/users.json', 'utf8', (err, data) => {
-        res.send(data);
+app.post("/auth/login", (req, res) => {
+   res.type("application/json");
+   fs.readFile(__dirname + "/users.json", (err, data) => {
+       const user = JSON.parse(data).find(user => user.username === req.body.username);
+       if (!user) {
+           res.status(401).end("Wrong username or password");
+           return;
+       }
+       if (user.password !== req.body.password) {
+           res.status(401).end("Wrong username or password");
+           return;
+       }
+       res.json({ id: user.id, username: user.username, email: user.email, isAdmin: user.admin });
+   })
+});
+
+app.post("/auth/register", (req, res) => {
+    const user = {
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
+        favorites: [],
+        admin: false
+    };
+    const filename = __dirname + "/users.json";
+
+    res.type("application/json");
+    fs.readFile(filename, (err, data) => {
+        const users = JSON.parse(data);
+        user.id = users.length + 1;
+        if (users.find(u => u.username === user.username)) {
+            res.status(409).end("Username already exists.");
+            return;
+        }
+        if (users.find(u => u.email === user.email)) {
+            res.status(409).end("Email already exists.");
+            return;
+        }
+        users.push(user);
+        fs.writeFile(filename, JSON.stringify(users, null, 4), err => {
+            if (err) return res.status(500).end("Server error: " + err.message);
+            res.status(201).end();
+        });
+    })
+});
+
+app.post("/auth/changeAccountInfo", (req, res) => {
+    const filename = __dirname + "/users.json";
+
+    fs.readFile(filename, "utf8", (err, data) => {
+        if (err) return res.status(500).end("Server error: " + err.message);
+
+        const users = JSON.parse(data);
+        const index = users.findIndex(u => u.id === req.body.id);
+
+        if (index < 0) return res.status(404).end("User does not exist.");
+
+        if (users[index].password !== req.body.password) {
+            return res.status(401).end("Wrong credentials.");
+        }
+
+        if (req.body.newUsername) users[index].username = req.body.newUsername;
+        if (req.body.newEmail) users[index].email = req.body.newEmail;
+        if (req.body.newPassword) users[index].password = req.body.newPassword;
+
+        fs.writeFile(filename, JSON.stringify(users, null, 4), err => {
+            if (err) return res.stauts(500).end("Server error: " + err.message);
+            res.json({
+                id: users[index].id,
+                username: users[index].username,
+                email: users[index].email,
+                isAdmin: users[index].admin
+            });
+            res.status(201).end();
+        });
     });
 });
 
-app.get('/users/:id', (req, res) => {
-    res.type('application/json');
-    fs.readFile(__dirname + '/users.json', 'utf8', (err, data) => {
-        const user = JSON.parse(data).find(item => item.id === +req.params.id);
-        if (user) {
-            res.json(user);
-        } else {
-            res.status(404).end();
+app.get("/favorites/:id", (req, res) => {
+    res.type("application/json");
+    fs.readFile(__dirname + "/users.json", (err, data) => {
+        const user = JSON.parse(data).find(user => user.id === +req.params.id);
+        if (!user) {
+            res.status(401).end();
+            return;
         }
+        res.send(user.favorites);
+    });
+});
+
+app.post("/switch-favorites/:id", (req, res) => {
+    const usersFilename = __dirname + "/users.json";
+    const recipesFilename = __dirname + "/recipes.json";
+
+    fs.readFile(recipesFilename, (err, data) => {
+        const recipe = JSON.parse(data).find(item => item.id === +req.params.id);
+        if (!recipe) res.status(404).end();
+    });
+
+    fs.readFile(usersFilename, (err, data) => {
+        if (err) return res.sendStatus(500);
+
+        const users = JSON.parse(data);
+        const index = users.findIndex(u => u.id === req.body.id);
+
+        if (index < 0) return res.sendStatus(404);
+
+        let newFavorites = [];
+        users[index].favorites.forEach(fav => {
+            if (fav !== +req.params.id) {
+                newFavorites.push(fav);
+            }
+        });
+        if (users[index].favorites.length === newFavorites.length) newFavorites.push(+req.params.id);
+        users[index].favorites = newFavorites;
+
+        fs.writeFile(usersFilename, JSON.stringify(users, null, 4), err => {
+            if (err) return res.sendStatus(500);
+            res.status(201).end();
+        });
     });
 });
 
@@ -33,15 +136,99 @@ app.get('/recipes', (req, res) => {
     });
 });
 
+app.post("/recipes/create", (req, res) => {
+    const recipe = {
+        name: req.body.name,
+        description: req.body.description,
+        ingredients: req.body.ingredients,
+        instructions: req.body.instructions,
+        imagePath: req.body.imagePath
+    };
+    const filename = __dirname + "/recipes.json";
+
+    res.type("application/json");
+    fs.readFile(filename, (err, data) => {
+        if (err) return res.status(500).end("Server error: " + err.message);
+        const recipes = JSON.parse(data);
+        recipe.id = recipes.length + 1;
+        recipes.push(recipe);
+        fs.writeFile(filename, JSON.stringify(recipes, null, 4), err => {
+            if (err) return res.status(500).end("Server error: " + err.message);
+            res.status(201).end();
+        });
+    });
+});
+
+app.post("/recipes/edit", (req, res) => {
+    const filename = __dirname + "/recipes.json";
+
+    res.type("application/json");
+    fs.readFile(filename, (err, data) => {
+        if (err) return res.status(500).end("Server error: " + err.message);
+        const recipes = JSON.parse(data);
+        const recipe = recipes.find(recipe => recipe.id === +req.body.id);
+        if (!recipe) return res.status(404).end("Recipe not found");
+
+        recipe.name = req.body.name;
+        recipe.description = req.body.description;
+        recipe.ingredients = req.body.ingredients;
+        recipe.instructions = req.body.instructions;
+        if (req.body.imagePath === "") {
+            recipe.imagePath = null;
+        } else {
+            recipe.imagePath = req.body.imagePath;
+        }
+
+        fs.writeFile(filename, JSON.stringify(recipes, null, 4), err => {
+            if (err) return res.status(500).end("Server error: " + err.message);
+            res.status(201).end();
+        });
+    });
+});
+
+app.post("/recipes/delete", (req, res) => {
+    const filename = __dirname + "/recipes.json";
+
+    res.type("application/json");
+    fs.readFile(filename, (err, data) => {
+        if (err) return res.status(500).end("Server error: " + err.message);
+        let recipes = JSON.parse(data);
+        const count = recipes.length;
+
+        recipes = recipes.filter(r => r.id !== +req.body.id);
+        if (count === recipes.length) res.status(404).end("Recipe not found");
+
+        fs.writeFile(filename, JSON.stringify(recipes, null, 4), err => {
+            if (err) return res.status(500).end("Server error: " + err.message);
+            res.status(201).end();
+        });
+    });
+});
+
 app.get('/recipes/:id', (req, res) => {
     res.type('application/json');
     fs.readFile(__dirname + '/recipes.json', 'utf8', (err, data) => {
+        console.log()
         const recipe = JSON.parse(data).find(item => item.id === +req.params.id);
         if (recipe) {
             res.json(recipe);
         } else {
             res.status(404).end();
         }
+    });
+});
+
+app.get("/many-recipes", (req, res) => {
+    fs.readFile(__dirname + "/recipes.json", "utf8", (err, data) => {
+        if (err) return res.status(500).send(err);
+
+        const ids = req.query.ids;
+        const requestedIds = Array.isArray(ids)
+            ? ids.map(Number)
+            : String(ids).split(",").map(Number);
+
+        const recipes = JSON.parse(data).filter(item => requestedIds.includes(item.id));
+        res.json(recipes);
     });
 });
 

@@ -5,17 +5,22 @@ import {RecipeDetails} from './recipe-details/recipe-details'
 import { AboutUs } from './about-us/about-us';
 import { Contact } from './contact/contact';
 import { Faq } from './faq/faq';
+import {Login} from './login/login';
+import {Profile} from './profile/profile';
+import {Register} from './register/register';
+import {ChangeInfo} from './change-info/change-info';
+import {Favorites} from './favorites/favorites';
+import {CreateRecipe} from './create-recipe/create-recipe';
+import { EditRecipe } from './edit-recipe/edit-recipe';
 
 export const routes: Routes = [
   {
     path: "",
-    component: Home,
-    title: "FOOD"
+    component: Home
   },
   {
     path: "recipes",
-    component: Recipes,
-    title: "Recipes"
+    component: Recipes
   },
   {
     path: "recipe-details/:id",
@@ -32,5 +37,33 @@ export const routes: Routes = [
   {
     path: "faq",
     component: Faq
+  },
+  {
+    path: "login",
+    component: Login
+  },
+  {
+    path: "register",
+    component: Register
+  },
+  {
+    path: "profile",
+    component: Profile
+  },
+  {
+    path: "change-profile",
+    component: ChangeInfo
+  },
+  {
+    path: "favorites",
+    component: Favorites
+  },
+  {
+    path: "create-recipe",
+    component: CreateRecipe
+  },
+  {
+    path: "edit-recipe/:id",
+    component: EditRecipe
   }
 ];

@@ -1,0 +1,53 @@
+<div class="section-content">
+  <h1>Profile</h1>
+  <div class="section-divider">
+
+    <div>
+      <div class="profile-info-container">
+        <div class="info-field">
+          <span>Username</span>
+          <p>{{ (activeUser$ | async)!.username }}</p>
+        </div>
+        <div class="info-field">
+          <span>E-Mail</span>
+          <p>{{ (activeUser$ | async)!.email }}</p>
+        </div>
+      </div>
+      <div class="button-container">
+        <button routerLink="/change-profile">Edit your Profile</button>
+        <button (click)="logout()">Logout</button>
+        @if ((activeUser$ | async)?.isAdmin) {
+          <button routerLink="/create-recipe">Create new Recipe</button>
+        }
+      </div>
+    </div>
+
+    <div class="favorite-container">
+      <h2>Favorites</h2>
+      <div id="recipes-grid" class="recipes-grid fade-in-grid">
+        @for (recipe of favorites; track recipe.id; let index = $index) {
+          @if(index <= 2) {
+            <app-recipe-card
+              [altText]="recipe.name"
+              [description]="recipe.description"
+              [id]="recipe.id"
+              [imageSource]="recipe.imagePath ?? 'assets/placeholder.png'"
+              [title]="recipe.name" />
+          }
+        }
+      </div>
+      @if (favorites.length > 3) {
+        <a routerLink="/favorites">and more...</a>
+      } @else {
+        <a routerLink="/recipes">
+          @if (favorites.length == 0) {
+            You have no recipes marked as favorite.<br />Find recipes...
+          } @else {
+            There are no more favorites.<br />Add more...
+          }
+        </a>
+      }
+    </div>
+
+  </div>
+</div>

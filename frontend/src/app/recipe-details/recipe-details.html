@@ -1,5 +1,5 @@
 <div class="section-content">
-  <a href="" class="back-link slide-in-left">←Back to all recipes</a>
+  <a routerLink="/recipes" class="back-link slide-in-left">←Back to all recipes</a>
 
   <article id="recipe-detail" class="recipe-detail-card pop-in" [ngClass]="{ shimmer: !recipe }">
     <div class="detail-header">
@@ -9,8 +9,27 @@
         <p id="recipe-desc">{{ recipe?.description ?? "Please wait" }}</p>
         <div class="chips">
           <span class="chip">Recipe</span>
+          @if ((activeUser$ | async)?.isAdmin) {
+            <span class="chip hover-link" routerLink="/edit-recipe/{{ recipe?.id }}">Edit</span>
+          }
         </div>
       </div>
+      @if (isFavorite == undefined) {
+      } @else if (isFavorite) {
+        <label>
+          <button (click)="switchFavoriteState()">
+            <img class="favorite-logo" src="assets/heart_full.png"  alt="remove from favorites"/>
+          </button>
+          <span>unfavorite</span>
+        </label>
+      } @else {
+        <label>
+          <button (click)="switchFavoriteState()">
+            <img class="favorite-logo" src="assets/heart_empty.png"  alt="add to favorite"/>
+          </button>
+          <span>add to favorites</span>
+        </label>
+      }
     </div>
 
     <div class="detail-content">

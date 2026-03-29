@@ -1,8 +1,11 @@
 import { Component, input } from '@angular/core';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-recipe-card',
-  imports: [],
+  imports: [
+    RouterLink
+  ],
   templateUrl: './recipe-card.html',
   styleUrl: './recipe-card.css',
   standalone: true,
