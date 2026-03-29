@@ -9,6 +9,9 @@
         <p id="recipe-desc">{{ recipe?.description ?? "Please wait" }}</p>
         <div class="chips">
           <span class="chip">Recipe</span>
+          @if ((activeUser$ | async)?.isAdmin) {
+            <span class="chip hover-link" routerLink="/edit-recipe/{{ recipe?.id }}">Edit</span>
+          }
         </div>
       </div>
       @if (isFavorite == undefined) {
@@ -22,7 +25,7 @@
       } @else {
         <label>
           <button (click)="switchFavoriteState()">
-            <img class="favorite-logo" src="assets/heart_empty.png "  alt="add to favorite"/>
+            <img class="favorite-logo" src="assets/heart_empty.png"  alt="add to favorite"/>
           </button>
           <span>add to favorites</span>
         </label>

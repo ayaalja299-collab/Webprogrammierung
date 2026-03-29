@@ -8,6 +8,7 @@ import {Register} from './register/register';
 import {ChangeInfo} from './change-info/change-info';
 import {Favorites} from './favorites/favorites';
 import {CreateRecipe} from './create-recipe/create-recipe';
+import { EditRecipe } from './edit-recipe/edit-recipe';
 
 export const routes: Routes = [
   {
@@ -47,5 +48,9 @@ export const routes: Routes = [
   {
     path: "create-recipe",
     component: CreateRecipe
+  },
+  {
+    path: "edit-recipe/:id",
+    component: EditRecipe
   }
 ];

@@ -158,9 +158,52 @@ app.post("/recipes/create", (req, res) => {
     });
 });
 
+app.post("/recipes/edit", (req, res) => {
+    const filename = __dirname + "/recipes.json";
+
+    res.type("application/json");
+    fs.readFile(filename, (err, data) => {
+        if (err) return res.status(500).end("Server error: " + err.message);
+        const recipes = JSON.parse(data);
+        const recipe = recipes.find(recipe => recipe.id === +req.body.id);
+        if (!recipe) return res.status(404).end("Recipe not found");
+
+        recipe.name = req.body.name;
+        recipe.description = req.body.description;
+        recipe.ingredients = req.body.ingredients;
+        recipe.instructions = req.body.instructions;
+        recipe.imagePath = req.body.imagePath;
+
+        fs.writeFile(filename, JSON.stringify(recipes, null, 4), err => {
+            if (err) return res.status(500).end("Server error: " + err.message);
+            res.status(201).end();
+        });
+    });
+});
+
+app.post("/recipes/delete", (req, res) => {
+    const filename = __dirname + "/recipes.json";
+
+    res.type("application/json");
+    fs.readFile(filename, (err, data) => {
+        if (err) return res.status(500).end("Server error: " + err.message);
+        let recipes = JSON.parse(data);
+        const count = recipes.length;
+
+        recipes = recipes.filter(r => r.id !== +req.body.id);
+        if (count === recipes.length) res.status(404).end("Recipe not found");
+
+        fs.writeFile(filename, JSON.stringify(recipes, null, 4), err => {
+            if (err) return res.status(500).end("Server error: " + err.message);
+            res.status(201).end();
+        });
+    });
+});
+
 app.get('/recipes/:id', (req, res) => {
     res.type('application/json');
     fs.readFile(__dirname + '/recipes.json', 'utf8', (err, data) => {
+        console.log()
         const recipe = JSON.parse(data).find(item => item.id === +req.params.id);
         if (recipe) {
             res.json(recipe);
