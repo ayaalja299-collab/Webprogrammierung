@@ -36,7 +36,11 @@
           }
         }
       </div>
-      <a routerLink="/favorites">and more...</a>
+      @if (favorites.length > 0) {
+        <a routerLink="/favorites">and more...</a>
+      } @else {
+        <a routerLink="/recipes">You have no recipes marked as favorite.<br />Find recipes...</a>
+      }
     </div>
 
   </div>
