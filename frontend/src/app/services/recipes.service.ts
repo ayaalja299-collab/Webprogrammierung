@@ -35,6 +35,13 @@ export class RecipesService {
     return  this.http.get<Recipe>(url);
   }
 
+  getRecipesByIds(ids: number[]): Observable<Recipe[]> {
+    const url = this.backendUrl + "/many-recipes";
+
+    const params = new HttpParams().set("ids", ids.join(","));
+    return this.http.get<Recipe[]>(url, { params });
+  }
+
   createRecipe(
     name: string,
     description: string,
