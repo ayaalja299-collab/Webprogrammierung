@@ -1,0 +1,53 @@
+<div class="section-content">
+  <a routerLink="/recipes" class="back-link slide-in-left">←Back to all recipes</a>
+
+  <article id="recipe-detail" class="recipe-detail-card pop-in" [ngClass]="{ shimmer: !recipe }">
+    <div class="detail-header">
+      <img id="recipe-image" src="{{ recipe?.imagePath  ?? 'assets/placeholder.png' }}" alt="{{ recipe?.name }}"/>
+      <div class="detail-title">
+        <h1 id="recipe-name">{{ recipe?.name ?? "Loading..."  }}</h1>
+        <p id="recipe-desc">{{ recipe?.description ?? "Please wait" }}</p>
+        <div class="chips">
+          <span class="chip">Recipe</span>
+          @if ((activeUser$ | async)?.isAdmin) {
+            <span class="chip hover-link" routerLink="/edit-recipe/{{ recipe?.id }}">Edit</span>
+          }
+        </div>
+      </div>
+      @if (isFavorite == undefined) {
+      } @else if (isFavorite) {
+        <label>
+          <button (click)="switchFavoriteState()">
+            <img class="favorite-logo" src="assets/heart_full.png"  alt="remove from favorites"/>
+          </button>
+          <span>unfavorite</span>
+        </label>
+      } @else {
+        <label>
+          <button (click)="switchFavoriteState()">
+            <img class="favorite-logo" src="assets/heart_empty.png"  alt="add to favorite"/>
+          </button>
+          <span>add to favorites</span>
+        </label>
+      }
+    </div>
+
+    <div class="detail-content">
+      <section class="ingredients zoom-in">
+        <h2>Ingredients</h2>
+        <ul id="ingredients-list">
+          @for (ingredient of recipe?.ingredients; track ingredient; let index = $index) {
+            <li class="ingredient-item reveal-item" [style.animation-delay]="index * 60 + 'ms'">
+              {{ ingredient }}
+            </li>
+          }
+        </ul>
+      </section>
+
+      <section class="instructions fade-in-block">
+        <h2>Preparation</h2>
+        <p id="instructions-text">{{ recipe?.instructions }}</p>
+      </section>
+    </div>
+  </article>
+</div>

@@ -1,0 +1,67 @@
+<main>
+  <div class="section-content">
+    <h1 class="section-title">Today's recipes</h1>
+  </div>
+  <div class="container">
+    <div class="wrapper">
+
+      <!-- LEFT ARROW -->
+
+      <button class="arrow arrow-left">&#10094;</button>
+
+      <div class="wrapper-holder">
+        @for (recipe of todaysRecipes; track recipe.id; let index = $index) {
+          @if (index < 3) {
+            <div
+              id="slider-img{{ index + 1 }}"
+              class="slide"
+              [style.background-image]="'url(' + recipe.imagePath + ')'"
+              [routerLink]="'/recipe-details/' + recipe.id"
+            >
+              <div class="slide-content">
+                <h2>{{ recipe.name }}</h2>
+                <p>{{ recipe.description }}</p>
+              </div>
+            </div>
+          }
+        }
+      </div>
+
+      <!-- RIGHT ARROW -->
+      <button class="arrow arrow-right">&#10095;</button>
+      <!-- RIGHT ARROW -->
+
+
+    </div>
+
+    <div class="button-holder">
+      <button class="button" data-index="0"></button>
+      <button class="button" data-index="1"></button>
+      <button class="button" data-index="2"></button>
+    </div>
+  </div>
+
+  <!-- Recipe Cards Section -->
+  <section class="recipes-section">
+    <h2 class="section-title">Popular Recipes</h2>
+
+    <!-- Neu: Button für alle Rezepte -->
+    <div style="margin-bottom: 20px;">
+      <a routerLink="recipes" class="recipe-btn">Show all recipes</a>
+    </div>
+
+    <div class="recipes-grid">
+      @if (popularRecipes.length === 0) {
+        <span>Loading...</span>
+      }
+      @for (recipe of popularRecipes; track recipe.id) {
+        <app-recipe-card
+          [imageSource]="recipe.imagePath ?? '/assets/placeholder.png'"
+          [altText]="recipe.name"
+          [title]="recipe.name"
+          [description]="recipe.description"
+          [id]="recipe.id" />
+      }
+    </div>
+  </section>
+</main>

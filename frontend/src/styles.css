@@ -1,0 +1,70 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Pacifico&display=swap');
+
+:root {
+  --white: #fff;
+  --black:  #000;
+  --color1: #7abcc4;
+  --color2: #9491bc;
+  --color3: #df678f;
+  --color4: #f3a6ba;
+  --color5: #fec1b6;
+  --color6: #feeddd;
+  --color-valid: #43a047;
+  --color-invalid: #e53935;
+  /* Define font sizes */
+  --font-size-s: 0.9rem;
+  --font-size-n: 1rem;
+  --font-size-m: 1.12rem;
+  --font-size-l: 1.5rem;
+  --font-size-xl: 2rem;
+  --font-size-xxl: 3rem;
+  /* Font weight
+  --font-weight-normal: 400;
+  --font-weight-mdeium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  /*Border radius*/
+  --border-radius-s: 8px;
+  --border-radius-m: 30px;
+  --border-radius-circle: 50%;
+  /*site max width*/
+  --site-max-width: 1800px;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  width: auto;
+}
+
+.section-content {
+  max-width: var(--site-max-width);
+  margin: 0 auto 0 auto;
+  padding: 20px;
+}
+
+.section-title {
+  font-size: var(--font-size-xxl);
+  margin-bottom: 40px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Caveat", cursive;
+}

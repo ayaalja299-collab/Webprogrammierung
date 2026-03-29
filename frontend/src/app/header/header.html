@@ -1,0 +1,19 @@
+<header>
+  <nav class="navbar section-content">
+    <a routerLink="" class="nav-logo"><h2 class="logo-text">Cozy Cravings</h2></a>
+    <ul class="nav-menu">
+      <li class="nav-item"><a routerLink="" class="nav-link">Home</a></li>
+      <li class="nav-item"><a routerLink="recipes" class="nav-link">Recipes</a></li>
+      <li class="nav-item"><a routerLink="about-us" class="nav-link">About Us</a></li>
+      <li class="nav-item"><a routerLink="contact" class="nav-link">Contact</a></li>
+      <li class="nav-item"><a routerLink="faq" class="nav-link">FAQ</a></li>
+      <li class="nav-item">
+        @if (activeUser$ | async; as activeUser) {
+          <a routerLink="profile" class="nav-link">{{ activeUser.username }}</a>
+        } @else {
+          <a routerLink="login" class="nav-link">Login</a>
+        }
+      </li>
+    </ul>
+  </nav>
+</header>

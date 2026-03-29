@@ -1,0 +1,39 @@
+/*navbar styling*/
+header {
+  background-color: var(--color1);
+}
+
+header .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  /*max-width: var(--site-max-width);
+  margin: 0 auto;
+  */
+}
+
+.navbar .nav-logo .logo-text {
+  color: var(--white);
+  font-family: "Pacifico", cursive;
+  font-size: var(--font-size-xxl);
+  font-weight: 400;
+}
+
+.navbar .nav-menu {
+  display: flex;
+  gap: 10px;
+}
+
+.navbar .nav-menu .nav-link {
+  padding: 10px 15px;
+  background: var(--color3);
+  border-radius: var(--border-radius-m);
+  color: var(--white);
+  font-size: var(--font-size-l);
+  transition: 0.3s ease;
+}
+
+.navbar .nav-menu .nav-link:hover {
+  background: var(--color4);
+}

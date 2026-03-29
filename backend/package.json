@@ -1,0 +1,10 @@
+{
+  "name": "@hwr/05-nodejs",
+  "scripts": {
+    "serve": "node src/server.js"
+  },
+  "dependencies": {
+    "cors": "2.8.5",
+    "express": "^4.22.1"
+  }
+}

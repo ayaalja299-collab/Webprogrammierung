@@ -1,0 +1,20 @@
+<div class="section-content">
+  <div class="form-container">
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+      <label>
+        Username
+        <input name="username" [(ngModel)]="username" required placeholder="Username..." />
+      </label>
+      <label>
+        Password
+        <input name="password" [(ngModel)]="password" required placeholder="Password..." />
+      </label>
+      <span>{{ errorMessage$ | async }}</span>
+      <button [disabled]="form.invalid">Login</button>
+      <button routerLink="/register">No account?<br />register instead</button>
+    </form>
+  </div>
+  <div class="form-image">
+    <img src="../../assets/login_pic.jpg" alt="Börek with Spinach and Feta"/>
+  </div>
+</div>
