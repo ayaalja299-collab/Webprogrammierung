@@ -26,7 +26,7 @@ export class App {
         isActive('/register', this.router, matchOptions)() ||
         isActive('/login', this.router, matchOptions)() ||
         isActive('/change-profile', this.router, matchOptions)() ||
-        isActive('/create-recipe', this.router, matchOptions)() ||
+        isActive('/edit-recipe', this.router, matchOptions)() ||
         isActive('/create-recipe', this.router, matchOptions)()
     );
   }
