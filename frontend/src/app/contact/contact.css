@@ -1,0 +1,199 @@
+/* Uses your global variables and base (e.g., from styles.css/style.css) */
+
+/* Generic page spacing helper (mirrors your section-content usage) */
+.section-content {
+  max-width: var(--site-max-width, 1200px);
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Reveal base state (same pattern as About) */
+.contact-hero,
+.contact-card,
+.contact-info {
+  transform: translateY(8px);
+  opacity: 0;
+  transition: transform .4s ease, opacity .4s ease, box-shadow .25s ease;
+}
+
+.reveal-in {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Hero */
+.contact-hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 28px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.contact-hero-text .contact-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.contact-hero-text .contact-subtitle {
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  color: #444;
+}
+
+.contact-hero-image {
+  width: 100%;
+  height: clamp(220px, 35vw, 360px);
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-end;
+}
+
+
+/* Grid layout: form-like card + info card */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+/* Cards */
+.contact-card,
+.contact-info {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 26px rgba(0,0,0,.12);
+  padding: 20px;
+}
+
+.contact-card:hover,
+.contact-info:hover {
+  box-shadow: 0 12px 30px rgba(0,0,0,.14);
+}
+
+.contact-card h2 {
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  margin-bottom: 14px;
+  color: #222;
+}
+
+/* Form-like controls (static for now) */
+.form-row {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.form-row label {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  color: #222;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="search"],
+select,
+textarea {
+  width: 100%;
+  height: 56px;
+  padding: 0 14px;
+  font-size: 1.05rem;
+  border-radius: 14px;
+  border: 1.5px solid #ddd;
+  outline: none;
+  background: #fff;
+  color: #222;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+textarea {
+  height: auto;
+  padding: 12px 14px;
+  min-height: 160px;
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--color3, #df678f);
+  box-shadow: 0 0 0 4px rgba(223,103,143,0.18);
+}
+
+/* Checkbox row */
+.agree-row .checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.02rem;
+}
+.agree-row input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+
+/* Actions */
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.recipe-btn {
+  display: inline-block;
+  padding: 10px 18px;
+  background: var(--color3, #df678f);
+  color: #fff;
+  border-radius: 30px;
+  transition: 0.3s ease;
+  font-size: 1.05rem;
+  border: none;
+  cursor: pointer;
+}
+
+.recipe-btn:hover {
+  background: var(--color4, #f3a6ba);
+}
+
+/* Contact info card */
+.contact-info h3 {
+  font-size: clamp(1.3rem, 2.6vw, 1.6rem);
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.info-list {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 14px;
+  font-size: 1.05rem;
+}
+
+.tips h4 {
+  font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+  margin-bottom: 6px;
+  color: #222;
+}
+.tips ul {
+  display: grid;
+  gap: 6px;
+  font-size: 1.02rem;
+  color: #444;
+  padding-left: 16px;
+  list-style: disc;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .contact-hero {
+    grid-template-columns: 1fr;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
