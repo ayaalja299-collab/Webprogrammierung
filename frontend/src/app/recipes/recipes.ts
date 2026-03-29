@@ -24,12 +24,7 @@ export class Recipes implements OnInit {
 
   async ngOnInit() {
     this.recipesService.getRecipes().subscribe((recipes) => {
-      recipes.forEach((recipe) => {
-        if (!recipe.imagePath) {
-          recipe.imagePath = 'assets/placeholder.png';
-        }
-        this.allRecipes.push(recipe);
-      });
+      recipes.forEach((recipe) => this.allRecipes.push(recipe));
       this.search();
       this.cdr.detectChanges(); // refresh Template
     });

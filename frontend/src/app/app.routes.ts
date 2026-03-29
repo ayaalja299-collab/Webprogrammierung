@@ -13,13 +13,11 @@ import { EditRecipe } from './edit-recipe/edit-recipe';
 export const routes: Routes = [
   {
     path: "",
-    component: Home,
-    title: "FOOD"
+    component: Home
   },
   {
     path: "recipes",
-    component: Recipes,
-    title: "Recipes"
+    component: Recipes
   },
   {
     path: "recipe-details/:id",

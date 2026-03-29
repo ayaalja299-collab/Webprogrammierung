@@ -21,9 +21,6 @@ export class Favorites {
   async ngOnInit() {
     this.recipesService.getFavorites().subscribe(recipes => {
       recipes.forEach(recipe => {
-        if (!recipe.imagePath) {
-          recipe.imagePath = "assets/placeholder.png";
-        }
         this.favorites.push(recipe);
       });
       this.cdr.detectChanges(); // refresh Template

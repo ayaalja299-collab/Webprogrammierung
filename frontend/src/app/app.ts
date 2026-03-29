@@ -9,7 +9,7 @@ import {Header} from './header/header';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('frontend');
+  protected readonly title = signal('FOOD');
 
   shouldBeScrollable: Signal<boolean>;
 

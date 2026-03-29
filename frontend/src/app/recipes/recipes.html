@@ -37,7 +37,7 @@
         [altText]="recipe.name"
         [description]="recipe.description"
         [id]="recipe.id"
-        [imageSource]="recipe.imagePath"
+        [imageSource]="recipe.imagePath ?? 'assets/placeholder.png'"
         [title]="recipe.name" />
     }
   </div>

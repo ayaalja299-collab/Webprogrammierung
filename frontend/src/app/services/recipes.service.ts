@@ -9,7 +9,7 @@ export interface Recipe {
   description: string;
   ingredients: string[];
   instructions: string;
-  imagePath: string;
+  imagePath?: string;
 }
 
 @Injectable({
