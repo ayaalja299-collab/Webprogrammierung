@@ -173,7 +173,11 @@ app.post("/recipes/edit", (req, res) => {
         recipe.description = req.body.description;
         recipe.ingredients = req.body.ingredients;
         recipe.instructions = req.body.instructions;
-        recipe.imagePath = req.body.imagePath;
+        if (req.body.imagePath === "") {
+            recipe.imagePath = null;
+        } else {
+            recipe.imagePath = req.body.imagePath;
+        }
 
         fs.writeFile(filename, JSON.stringify(recipes, null, 4), err => {
             if (err) return res.status(500).end("Server error: " + err.message);
