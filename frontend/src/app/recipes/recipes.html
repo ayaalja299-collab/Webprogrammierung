@@ -9,12 +9,19 @@
           type="search"
           id="search"
           placeholder="Search for recipe..."
-          aria-label="Rezepte durchsuchen"
+          aria-label="Search for recipe"
+          [(ngModel)]="searchField"
+          (ngModelChange)="search()"
         />
       </div>
       <div class="select-group">
         <label for="sort" class="sr-only">Sortieren</label>
-        <select id="sort" aria-label="Rezepte sortieren">
+        <select
+          id="sort"
+          aria-label="Sort recipes"
+          [(ngModel)]="sortOrder"
+          (ngModelChange)="sort()"
+        >
           <option value="name-asc">Name A–Z</option>
           <option value="name-desc">Name Z–A</option>
           <option value="id-asc">ID ↑</option>
