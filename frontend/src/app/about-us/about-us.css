@@ -1,0 +1,14 @@
+/* initial state for reveal elements */
+.about-card,
+.about-how-inner,
+.about-promise-box {
+  transform: translateY(8px);
+  opacity: 0;
+  transition: transform .4s ease, opacity .4s ease, box-shadow .25s ease;
+}
+
+/* when revealed */
+.reveal-in {
+  transform: translateY(0);
+  opacity: 1;
+}
