@@ -42,6 +42,10 @@
   position: relative;
 }
 
+.slide {
+  cursor: pointer;
+}
+
 .button {
   width: 16px;
   height: 16px;
@@ -61,10 +65,6 @@
   padding: 60px 20px;
   background: var(--color6);
   text-align: center;
-}
-
-.section-title {
-
 }
 
 /* Grid layout */
